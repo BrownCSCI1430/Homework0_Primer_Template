@@ -104,6 +104,39 @@ $ pip install -r requirements.txt
 
 Pip is a package manager that allows us to easily install Python modules. In this scenario, the above command neatly reads a list of modules from requirements.txt and installs them all in a virtual environment. If you don't already have pip installed on your computer, you can follow the instructions here: \href{https://pip.pypa.io/en/stable/installing/}{https://pip.pypa.io/en/stable/installing/}.
 
+\subsection{Working Locally}
+If you want to recreate the \texttt{cs1430\_env} to work locally on either a macOS or Linux system, you can use the \texttt{virtualenv} utility to create a new Python virtual environment.
+
+\textbf{WARNING:} before you hand in your assignments, make sure that your project still works using the original \texttt{cs1430\_env}. Otherwise, you may lose points during grading!
+
+To install \texttt{virtualenv}, run the following in a new terminal session (make sure that no other virtual environments are active).
+\begin{verbatim}
+$ pip3 install virtualenv
+\end{verbatim}
+
+Next, navigate to a directory of your choice (the standard practice is to go to the root directory of your Python project) and run:
+\begin{verbatim}
+$ virtualenv --python=<PYTHON_EXE> venv
+\end{verbatim}
+
+\texttt{PYTHON\_EXE} is the path to the Python executable that you wish to use in your virtual environment. The version of this Python executable should be at least 3.5.
+
+The virtualenv command above creates a new directory called \texttt{venv} that contains your new virtual env. You can activate this using the following command:
+\begin{verbatim}
+$ source ./venv/bin/activate
+\end{verbatim}
+
+Next install the necessary packages to your virtual environment by getting the appropriate \texttt{requirements.txt} and running:
+\begin{verbatim}
+(venv) $ pip install -r <path_to_requirements.txt>
+\end{verbatim}
+
+Note that this must be run while your virtual environment is activated.
+
+Now you can treat your \texttt{venv} just like \texttt{cs1430\_env}!
+
+Mac virtualenv users may need to refer to following section for \texttt{matplotlib} errors.
+
 \subsection{Common Errors}
 When installing the virtual environment via \texttt{pip}, if you already have Python 2.7 installed, then \texttt{pip} may refer to your Python 2.7 installation. Use \texttt{pip3} instead to refer to your Python 3.x installation.
 \begin{verbatim}
