@@ -212,9 +212,11 @@ How could we speed it up? Please include your code. \\
 
 % Please leave the pagebreak
 \pagebreak
-\paragraph{Q3.2:} What factor speedup would we receive over 1000 images? Please measure it and include your code.
+\paragraph{Q3.2:} What factor speedup would we receive over 1000 images? The speedup factor is a ratio between naive for-loops and logical indexing. Please measure it and include your code.
 
 Ignore file loading; assume all images are equal resolution; don't assume that the time taken for one image $\times1000$ will equal $1000$ image computations, as single short tasks on multitasking computers often take variable time.
+
+To ignore file loading, you should either write your code in a way such that you make copies of the loaded image inside the loop or in a way such that you load the image in a loop, but only time the modification.
 
 \emph{Note: Running the slow code on 1000 images might take 45 minutes or more! You can compute the factor on just 10 images. For the sped-up version, you might need to compute the time on more images to receive a more reliable estimate of the average time. Be sure to compensate for the number of images computed against in your speedup factor.}
 
@@ -227,9 +229,9 @@ Ignore file loading; assume all images are equal resolution; don't assume that t
 
 % Please leave the pagebreak
 \pagebreak
-\paragraph{Q3.3:} Next, we wish to operate on color images. How does your speeded-up version from Q3.2 change for color images? Please implement and measure it, report the speed factor change, and include your code.
+\paragraph{Q3.3:} Next, we wish to operate on color images. How does your speeded-up version from Q3.2 change for color images? In other words, you should describe how the speed-up factor changes between grayscale and color images. Please implement the change and measure it, report the speed factor change, and include your code.
 
-\emph{Note: We will change the value in each color channel; we do not wish to convert the image to grayscale.}
+\emph{Note: We will change the value in each color channel; we do not wish to convert the image to grayscale. This means you must also modify the original code in Q3.1 to naively iterate over color images.}
 
 \emph{Image:} \href{grizzlypeak.jpg}{grizzlypeak.jpg}
 
