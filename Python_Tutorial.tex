@@ -133,6 +133,11 @@ The virtualenv command above creates a new directory called \texttt{venv} that c
 $ source ./venv/bin/activate
 \end{verbatim}
 
+On Windows machines, you can activate the venv by running:
+\begin{verbatim}
+C:\> source <venv>\Scripts\activate
+\end{verbatim}
+
 Next install the necessary packages to your virtual environment by getting the appropriate \texttt{requirements.txt} from  \href{http://cs.brown.edu/courses/csci1430/gradescope/requirements.txt}{here} and running:
 \begin{verbatim}
 (venv) $ pip3 install -r <path_to_requirements.txt>
@@ -234,7 +239,7 @@ A = np.arange(1, 6)
 
 $A$ should now be equal to the array $[1,2,3,4,5]$.
 Now, type $A[0]$ into the command window and press enter. Note that $1$ is the return value.
-Now try modifying the first element of the array by setting its value to 5; type $A[1]=5$ into the command window and press enter. The value of the array should now be $[5,2,3,4,5]$.
+Now try modifying the first element of the array by setting its value to 5; type $A[0]=5$ into the command window and press enter. The value of the array should now be $[5,2,3,4,5]$.
 
 \section{Reading and Displaying Images}
 The \href{hhttp://scikit-image.org/docs/dev/api/skimage.io.html#skimage.io.imread}{$skimage.io.imread$} function is used to load images.
