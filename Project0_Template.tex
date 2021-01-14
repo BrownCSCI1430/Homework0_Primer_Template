@@ -2,13 +2,13 @@
 %
 % CSCI 1430 Written Question Template
 %
-% This is a LaTeX document. LaTeX is a markup language for producing 
-% documents. Your task is to fill out this document, then to compile 
-% it into a PDF document. 
-% You will then upload this PDF to `Gradescope' - the grading system 
+% This is a LaTeX document. LaTeX is a markup language for producing
+% documents. Your task is to fill out this document, then to compile
+% it into a PDF document.
+% You will then upload this PDF to `Gradescope' - the grading system
 % that we will use. Instructions for upload will follow soon.
 %
-% 
+%
 % TO COMPILE:
 % > pdflatex thisfile.tex
 %
@@ -17,7 +17,7 @@
 % - Departmental machines have one installed.
 % - Personal laptops (all common OS): www.latex-project.org/get/
 %
-% If you need help with LaTeX, please come to office hours. 
+% If you need help with LaTeX, please come to office hours.
 % Or, there is plenty of help online:
 % https://en.wikibooks.org/wiki/LaTeX
 %
@@ -78,13 +78,14 @@
 \section*{Instructions}
 \begin{itemize}
   \item Complete the setup checklist.
-  \item 4 questions.
+  \item 5 questions.
   \item Include code, images, or equations where appropriate.
   \item Please make this document anonymous.
-  \item We recommend editing this .tex file in \href{https://www.overleaf.com/}{Overleaf} to ensure the used packages are available. If you use pdfLatex, you may need to import the used packages to maintain the formatting. 
-  \item Try to keep your answers within the given space. If you really need to, please add a page break after any answer that has gone over the page. On upload, \textbf{Gradescope will ask you to assign question numbers to your pages}.
+  \item We recommend editing this .tex file in \href{https://www.overleaf.com/}{Overleaf} to ensure the used packages are available. If you use pdfLatex, you may need to import the used packages to maintain the formatting.
+  \item This assignment is \textbf{fixed length}, and the pages have been assigned for you in Gradescope. As a result, \textbf{please do NOT add any new pages}. We will provide ample room for you to answer the questions. If you \emph{really} wish for more space, please add a page \emph{at the end of the document}.
+  \item \textbf{We do NOT expect you to fill up each page with your answer.} Some answers will only be a few sentences long, and that is okay.
   \item When you are finished, compile this document to a PDF and submit it directly to Gradescope.
-    
+
 \end{itemize}
 
 \section*{Setup Checklist (Graded)}
@@ -103,12 +104,12 @@ For each of the following, complete the task and check the box to mark it as don
 
 \section*{Questions}
 
-\paragraph{Q1:} Please find and read the course collaboration policy on the \href{http://cs.brown.edu/courses/csci1430/}{course website} and mark whether each of the following scenarios violates the policy. 
+\paragraph{Q1:} Please find and read the course collaboration policy on the \href{http://cs.brown.edu/courses/csci1430/}{course website} and mark whether each of the following scenarios violates the policy.
 
 \emph{LaTeX:} To fill in boxes, replace `\textbackslash square' with `\textbackslash blacksquare' for your answer.
 
 \begin{enumerate}[(a)]
-\item 
+\item
 Another CSCI1430 student looking at your code to help you debug, after you have spent time trying to tackle the bug or have come to TA office hours/Piazza.
 
 \begin{tabular}[h]{ll}
@@ -116,7 +117,7 @@ $\square$ & Acceptable \\
 $\square$ & Violation \\
 \end{tabular}
 
-\item 
+\item
 Using the result images from another student's code for your write up because your code is broken.
 
 \begin{tabular}[h]{ll}
@@ -124,7 +125,7 @@ $\square$ & Acceptable \\
 $\square$ & Violation \\
 \end{tabular}
 
-\item 
+\item
 Googling third party sites to clarify concepts for written and code assignments, with proper citation.
 
 \begin{tabular}[h]{ll}
@@ -132,7 +133,7 @@ $\square$ & Acceptable \\
 $\square$ & Violation \\
 \end{tabular}
 
-\item 
+\item
 A student who has previously taken the course and is not currently a TA sharing code with you to help you get through a bug.
 
 \begin{tabular}[h]{ll}
@@ -153,14 +154,14 @@ $\square$ & Violation \\
 \pagebreak
 
 \paragraph{Q2:}
-Computer vision is all around us, sometimes in surprising ways. 
+Computer vision is all around us, sometimes in surprising ways.
 \begin{enumerate}[(a)]
 
 \item
 If you could have any computer vision related superpower---there are no limitations---what would it be?
 
 \item
-How would you use your superpower? 
+How would you use your superpower?
 
 \item Find a recent example (past 6 months or so) of a controversial real world use of computer vision. What caused the controversy?
 
@@ -173,11 +174,11 @@ Please cite a source. Extra credit for unique examples!
 
 % \begin{enumerate}[(a)]
 
-% \item 
+% \item
 
-% \item 
+% \item
 
-% \item 
+% \item
 
 % \end{enumerate}
 
@@ -198,7 +199,7 @@ A = io.imread('grizzlypeakg.png')
 for i in range(m1):
     for j in range(n1):
         if A[i,j] <= 10 :
-            A[i,j] = 0       
+            A[i,j] = 0
 \end{python}
 
 How could we speed it up? Please include your code. \\
@@ -212,26 +213,30 @@ How could we speed it up? Please include your code. \\
 
 % Please leave the pagebreak
 \pagebreak
-\paragraph{Q3.2:} What factor speedup would we receive over 1000 images? The speedup factor is a ratio between naive for-loops and logical indexing. Please measure it and include your code.
+\paragraph{Q3.2:} What factor speedup would we receive over 1000 images? The speedup factor is the ratio between the time spent on the naive version and the time spent on the sped-up version. Please measure calculate the speedup factor and include your code.
 
-Ignore file loading; assume all images are equal resolution; don't assume that the time taken for one image $\times1000$ will equal $1000$ image computations, as single short tasks on multitasking computers often take variable time.
+When measuring the time for each version, ignore file loading. To do so, you should either write your code in a way such that you make copies of the loaded image inside the loop or in a way such that you load the image in a loop, but only time the modification.
 
-To ignore file loading, you should either write your code in a way such that you make copies of the loaded image inside the loop or in a way such that you load the image in a loop, but only time the modification.
+Assume all images are equal resolution. This means you only need to use \href{grizzlypeakg.png}{grizzlypeakg.png} for this problem. Don't assume that the time taken for one image $\times1000$ will equal $1000$ image computations, as single short tasks on multitasking computers often take variable time.
+
+
 
 \emph{Note: Running the slow code on 1000 images might take 45 minutes or more! You can compute the factor on just 10 images. For the sped-up version, you might need to compute the time on more images to receive a more reliable estimate of the average time. Be sure to compensate for the number of images computed against in your speedup factor.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \paragraph{A3.2:} Your answer here.
 
-
+\pagebreak{A3.2:} (Extra Space)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Please leave the pagebreak
 \pagebreak
-\paragraph{Q3.3:} Next, we wish to operate on color images. How does your speeded-up version from Q3.2 change for color images? In other words, you should describe how the speed-up factor changes between grayscale and color images. Please implement the change and measure it, report the speed factor change, and include your code.
+\paragraph{Q3.3:} Next, we wish to operate on color images. How does your speeded-up version from Q3.2 change for color images? In other words, you should describe how the speed-up factor differed from Q3.2.
 
-\emph{Note: We will change the value in each color channel; we do not wish to convert the image to grayscale. This means you must also modify the original code in Q3.1 to naively iterate over color images.}
+You need to modify the naive code from Q3.1 to iterate over the color channels. However, you should not need to modify the sped-up code, but you are welcome to do so if you think it makes sense. Then, measure the speedup factor between the modified naive version and the sped-up version on color images and report how it differs from Q3.2.
+
+\emph{Note: You should not convert the image to grayscale.}
 
 \emph{Image:} \href{grizzlypeak.jpg}{grizzlypeak.jpg}
 
@@ -264,10 +269,84 @@ What is incorrect with this approach? How can it be fixed while maintaining the 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \paragraph{A4:} Your answer here.
 
+\pagebreak
+\paragraph{A4:} (Extra Space)
 % Example image inclusion; replace with your result image:
 % \includegraphics[width=\textwidth]{grizzlypeakg.png}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Please leave the pagebreak
+\pagebreak
+\paragraph{Q5.1: Debugging - Crop} Now it's time to become familiar with VS Code's debugger. Your task is to create a crop that starts at the center of the image and extends to the lower right corner of the image. If all goes well, you should only see content from the lower right region of the original image.
+
+
+\emph{Image:} \href{gigi.jpg}{gigi.jpg}
+
+\begin{python}
+from skimage import io
+import matplotlib.pyplot as plt
+origImage = io.imread('gigi.jpg')
+(height, width, channels) = origImage.shape
+startCropX = width % 2
+startCropY = height % 2
+croppedImage = origImage[startCropY:, startCropX:]
+plt.imshow(croppedImage)
+plt.show()
+\end{python}
+Identify the bug in this program. Briefly explain what is incorrect and how you used the debugger to identify the issue. Include a photo of the debugger.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{A5.1: } Describe the bugs and how you used the debugger here. (3-4 sentences)
+\begin{python}
+# Put the correct code here.
+\end{python}
+
+Include an image of the debugger here:
+% Example image inclusion; replace with your result image:
+% \includegraphics[width=\textwidth]{gigi.jpg}
+
+% Please leave the pagebreak
+\pagebreak
+\paragraph{A5.1:}
+(Extra space)
+
+% Please leave the pagebreak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagebreak
+\paragraph{Q5.2: Debugging - Matrix Multiplication} This program should print out the index with the maximum value in the image obtained by matrix multipling an image with its transpose. If all goes well, your code should print out "Index with max value: 8844".
+
+This program uses numpy, a library you can find more about \href{https://numpy.org/doc/stable/}{here}.
+
+\emph{Hint: Remember rules about matrix multiplication. What should the dimensions of each matrix be? Use the debugger to notice how the shapes of the images do or do not change.}
+
+\emph{Image to use:} \href{parrot.png}{parrot.png}
+
+\begin{python}
+from skimage import io, img_as_float32
+import numpy as np
+image_1 = img_as_float32(io.imread('parrot.png'))
+image_2 = image_1
+np.transpose(image_2)
+multiplied_image = np.matmul(image_1, image_2)
+return_val = np.max(multiplied_image)
+print("Index with max value:", return_val)
+\end{python}
+Identify the bugs in this program. Briefly explain what is incorrect and how you used the debugger to identify the issue. Include a photo of the debugger that shows the shapes of the matrices.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{A5.2: } Describe the bugs and how you used the debugger here. (3-4 sentences)
+\begin{python}
+# Put the correct code here.
+\end{python}
+
+Include an image of the debugger here:
+% Example image inclusion; replace with your result image:
+% \includegraphics[width=\textwidth]{gigi.jpg}
+
+% Please leave the pagebreak
+\pagebreak
+\paragraph{A5.2} (Extra space)
 \end{document}
