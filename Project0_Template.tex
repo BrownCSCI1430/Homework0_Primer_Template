@@ -147,9 +147,6 @@ $\square$ & Violation \\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 % Please leave the pagebreak
 \pagebreak
 
@@ -195,9 +192,9 @@ Please cite a source. Extra credit for unique examples!
 from skimage import io
 
 A = io.imread('grizzlypeakg.png')
-(m1,n1) = A.shape
-for i in range(m1):
-    for j in range(n1):
+(height,width) = A.shape
+for i in range(height):
+    for j in range(width):
         if A[i,j] <= 10 :
             A[i,j] = 0
 \end{python}
@@ -315,7 +312,7 @@ Include an image of the debugger here:
 % Please leave the pagebreak
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pagebreak
-\paragraph{Q5.2: Debugging - Matrix Multiplication} This program should print out the index with the maximum value in the image obtained by matrix multipling an image with its transpose. If all goes well, your code should print out "Index with max value: 8844".
+\paragraph{Q5.2: Debugging - Matrix Multiplication} This program should print out the index with the maximum value in the image obtained by matrix multiplying an image with its transpose. If all goes well, your code should print out "Index with max value: 8844".
 
 This program uses numpy, a library you can find more about \href{https://numpy.org/doc/stable/}{here}.
 
