@@ -1,6 +1,6 @@
  # Project 0
 
-- We strongly recommend using [Overleaf](https://www.overleaf.com/) for turning LaTeX files into PDFs.
+- For LaTeX, [Overleaf](https://www.overleaf.com/) is a friendly system for turning LaTeX files into PDFs. You can also install your own LaTeX distribution, such as MiKTeX.
 
 Fill in the document named `Project0_Template.tex`. 
 

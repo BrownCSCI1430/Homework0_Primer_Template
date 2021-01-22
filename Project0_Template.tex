@@ -81,7 +81,7 @@
   \item 5 questions.
   \item Include code, images, or equations where appropriate.
   \item Please make this document anonymous.
-  \item We recommend editing this .tex file in \href{https://www.overleaf.com/}{Overleaf} to ensure the used packages are available. If you use pdfLatex, you may need to import the used packages to maintain the formatting.
+  \item We recommend editing this .tex file in \href{https://www.overleaf.com/}{Overleaf} to ensure the used packages are available. If you use pdfLatex, your distribution (e.g., MiKTeX) needs to have the packages installed..
   \item This assignment is \textbf{fixed length}, and the pages have been assigned for you in Gradescope. As a result, \textbf{please do NOT add any new pages}. We will provide ample room for you to answer the questions. If you \emph{really} wish for more space, please add a page \emph{at the end of the document}.
   \item \textbf{We do NOT expect you to fill up each page with your answer.} Some answers will only be a few sentences long, and that is okay.
   \item When you are finished, compile this document to a PDF and submit it directly to Gradescope.
@@ -97,9 +97,9 @@ For each of the following, complete the task and check the box to mark it as don
     \item Create a GitHub account, if you don't have one.
     \item Join the \href{https://www.gradescope.com/}{Gradescope} course.
     \item Join the course \href{https://piazza.com/}{Piazza}.
-    \item Read the \href{https://browncsci1430.github.io/webpage/resources/python_tutorial/}{Python tutorial}.
-    \item Set up python environment and virtual environment.
+    \item Set up the \href{https://browncsci1430.github.io/webpage/resources/python_setup/}{python environment and virtual environment}.
     \item Set up an editing environment (VSCode), get it to use your python virtual environment, and know how to debug within it by setting breakpoints.
+    \item Read the \href{https://browncsci1430.github.io/webpage/resources/python_tutorial/}{Python tutorial}.
 \end{todolist}
 
 \section*{Questions}
@@ -183,9 +183,9 @@ Please cite a source. Extra credit for unique examples!
 
 % Please leave the pagebreak
 \pagebreak
-\paragraph{Q3:} We wish to set all pixels that have a value of 10 or less to 0, to remove camera sensor noise. However, our code is slow when run on a database with 1000 grayscale images.
+\paragraph{Q3.1:} Here is an image: \href{grizzlypeakg.png}{grizzlypeakg.png}
 
-\emph{Image:} \href{grizzlypeakg.png}{grizzlypeakg.png}
+We wish to set all pixels that have a value of 50 or less to 0, to remove some of the lower-intensity haze around the bright lights. However, our code only works on single-channel grayscale images.
 
 \begin{python}
 from skimage import io
@@ -194,14 +194,16 @@ A = io.imread('grizzlypeakg.png')
 (height,width) = A.shape
 for i in range(height):
     for j in range(width):
-        if A[i,j] <= 10 :
+        if A[i,j] <= 50 :
             A[i,j] = 0
 \end{python}
 
-How could we speed it up? Please include your code. \\
+How could we convert it to handle color images? Please include your code. \\
+
+\emph{Image:} \href{grizzlypeak.jpg}{grizzlypeak.jpg} is a color version of the same image.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph{A3:} Your written answer here. (1-2 sentences)
+\paragraph{A3.1:} Your written answer here. (1-2 sentences)
 \begin{python}
 # Your code goes here
 \end{python}
@@ -211,43 +213,31 @@ How could we speed it up? Please include your code. \\
 
 % Please leave the pagebreak
 \pagebreak
-\paragraph{Q3.2:} What factor speedup would we receive over 1000 images? The speedup factor is the ratio between the time spent on the naive version and the time spent on the sped-up version. Please measure calculate the speedup factor and include your code.
+\paragraph{Q3.2:} Next, imagine we wanted to process 1000 images in the same way, but we weren't sure if our program was fast enough in execution time to cope with that many images. 
 
-When measuring the time for each version, ignore file loading. To do so, you should either write your code in a way such that you make copies of the loaded image inside the loop or in a way such that you load the image in a loop, but only time the modification.
+(a) Please time your code execution!
 
-Assume all images are equal resolution. This means you only need to use \href{grizzlypeakg.png}{grizzlypeakg.png} for this question. Don't assume that the time taken for one image $\times1000$ will equal $1000$ image computations, as single short tasks on multitasking computers often take variable time.
+\emph{When measuring the time, you can ignore file loading. To do so, you should either write your code in a way such that you make copies of the loaded image inside the loop or in a way such that you load the image in a loop, but only time the modification. You can also assume that all images are of equal resolution to our initial image---we only need to use \href{grizzlypeak.jpg}{grizzlypeak.jpg} for this question.}
 
+\emph{Don't assume that the time taken for one image $\times1000$ will equal $1000$ image computations, as single short tasks on multitasking computers often take variable time. But, running the code on 1000 images might take 45 minutes or more! Instead, compute the time on a smaller number, say, 10 images, and compute the average time.}
 
+(b) You might find the code is too slow to handle 1000 images---why is it slow? Let's speed it up. Using what we learned in our Python tutorial, write code for a sped-up version.
 
-\emph{Note: Running the slow code on 1000 images might take 45 minutes or more! You can compute the factor on just 10 images. For the sped-up version, you might need to compute the time on more images to receive a more reliable estimate of the average time. Be sure to compensate for the number of images computed against in your speedup factor.}
+(c) Time the execution of your faster code---use an appropriate number of images to get a reliable estimate. How much faster is the new version, as a multiplicative factor? (eg., 2$\times$, 5$\times$.)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph{A3.2:} Your written answer here. (1-2 sentences)
+\paragraph{A3.2:} 
+
+(a) Your written answer here. (1-2 sentences)
+
+(b) 
 \begin{python}
 # Your code goes here
 \end{python}
+
+(c) 
 
 \pagebreak{A3.2:} (Extra Space)
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Please leave the pagebreak
-\pagebreak
-\paragraph{Q3.3:} Next, we wish to operate on color images. How does your speeded-up version from Q3.2 change for color images? In other words, you should describe how the speed-up factor differed from Q3.2.
-
-You need to modify the naive code from Q3.1 to iterate over the color channels. However, you should not need to modify the sped-up code, but you are welcome to do so if you think it makes sense. Then, measure the speedup factor between the modified naive version and the sped-up version on color images and report how it differs from Q3.2.
-
-\emph{Note: You should not convert the image to grayscale.}
-
-\emph{Image:} \href{grizzlypeak.jpg}{grizzlypeak.jpg}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph{A3.3:} Your written answer here. (1-2 sentences)
-
-
-\begin{python}
-# Your code goes here
-\end{python}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -279,7 +269,8 @@ What is incorrect with this approach? How can it be fixed while maintaining the 
 
 Result image here:
 % Example image inclusion; replace with your result image:
-% \includegraphics[width=\textwidth]{grizzlypeakg.png}
+% \includegraphics[width=\textwidth]{your_image_here.jpg}
+
 \pagebreak
 \paragraph{A4:} (Extra Space)
 
@@ -289,33 +280,59 @@ Result image here:
 
 % Please leave the pagebreak
 \pagebreak
-\paragraph{Q5.1: Debugging - Crop} Now it's time to become familiar with VS Code's debugger. Your task is to create a crop that starts at the center of the image and extends to the lower right corner of the image. If all goes well, you should only see content from the lower right region of the original image.
+\paragraph{Q5.1: Debugging---Control Flow} Next, please show us that you can use the debugger within VSCode---we'd like to make sure everyone is set up and can use it correctly. 
 
+Imagine our task is to create a crop of an image that starts at the center of the image and extends to the lower right corner of the image. If all goes well, we should only see content from the lower right region of the original image.
 
 \emph{Image:} \href{gigi.jpg}{gigi.jpg}
 
 \begin{python}
 from skimage import io
 import matplotlib.pyplot as plt
+
 origImage = io.imread('gigi.jpg')
 (height, width, channels) = origImage.shape
 startCropX = width % 2
 startCropY = height % 2
 croppedImage = origImage[startCropY:, startCropX:]
+
 plt.imshow(croppedImage)
 plt.show()
 \end{python}
-Identify the bug in this program. Briefly explain what is incorrect and how you used the debugger to identify the issue. Include a photo of the debugger.
+
+Create a new python file in the same directory as the image, and copy in the above code block. Then, open the file in VSCode, and execute the code within a debugging session by pressing F5 (or `Run $\rightarrow$ Start Debugging'). At the prompt, we wish to `Debug the currently active Python file'.
+
+The output is not currently what we want, so let's stop execution and then identify the bug in this program:
+\begin{enumerate}
+    \item First, set a breakpoint at line 7 and then re-execute the code within a debugging session.
+    \item Inspect the `startCropX' variable either by looking at the left-hand Variables panel, or by mouse hovering over the variable in the text editor. What should it be?
+    \item Execute line 7 of code by `stepping over' the current line (F10, or `Run $\rightarrow$ Step Over). We should now be about to execute line 8.
+    \item Inspect `startCropY' and verify its correctness.
+\end{enumerate}
+
+At this point, you might have an idea of how to fix the code. But, before stopping execution and editing the file, let's test out our hypothesis in the `Debug Console' during debugging.
+
+\begin{enumerate}
+    \item Switch to the Debug Console by pressing CTRL-SHIFT-Y (or `View $\rightarrow$ Debug Console') --- you should see it in the bottom right of the display screen.
+    \item \emph{This is an interactive Python console with access to working memory.} As a test, print out the value of `width'. Perform a mathematical operation on `width'.
+    \item Assign the right value to `startCropX' within the Debug Console. Notice how the value updated in the Variables panel.
+    \item Do the same for `startCropY'.
+    \item From this point, execute the rest of the code by Continuing beyond our current paused position in the code. Press F5 to Continue (or `Run $\rightarrow$ Continue').
+\end{enumerate}
+
+Do we now see the correct output?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph{A5.1: } Describe the bugs and how you used the debugger here. (3-4 sentences)
+\paragraph{A5.1: } (a) Re-execute the debugger, and capture a screenshot showing your use of the Debug Console and inspection of a variable. Please include it below.
+
+% Example image inclusion; replace with your result image:
+% \includegraphics[width=\textwidth]{your_image_here.jpg}
+
+(b) Describe what caused the bug. You can write the corrected lines as your answer below.
 \begin{python}
 # Put the correct code here.
 \end{python}
 
-Include an image of the debugger here:
-% Example image inclusion; replace with your result image:
-% \includegraphics[width=\textwidth]{gigi.jpg}
 
 % Please leave the pagebreak
 \pagebreak
@@ -325,36 +342,42 @@ Include an image of the debugger here:
 % Please leave the pagebreak
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pagebreak
-\paragraph{Q5.2: Debugging - Matrix Multiplication} This program should print out the index with the maximum value in the image obtained by matrix multiplying an image with its transpose. If all goes well, your code should print out "Index with max value: 8844".
+\paragraph{Q5.2: Debugging---Exceptions} This program should print out the maximum value in the matrix obtained by multiplying a random non-square matrix with its transpose.
 
-This program uses numpy, a library you can find more about \href{https://numpy.org/doc/stable/}{here}.
+Here, we're using some numpy functions that may be new to us, but they each have self-explanatory names.
+
+\begin{python}
+import numpy as np
+from numpy import random as r
+
+mat_1 = r.rand(200,150)
+mat_2 = mat_1
+np.transpose(mat_2)
+mat_3 = np.matmul(mat_1, mat_2)
+mat_max = np.max(mat_3)
+
+print("Max value:", mat_max)
+\end{python}
+
+This time, when we execute the code, it will exception.
+
+Run the code in a debugging session, note the exception, and inspect the variables. Form a hypothesis for the error, and use the Debug Console to test that it prevents the exception. Capture a screenshot of your session showing us the issue and your fix.
 
 \emph{Hint: Remember rules about matrix multiplication. What should the dimensions of each matrix be? Use the debugger to notice how the shapes of the images do or do not change.}
 
-\emph{Image to use:} \href{parrot.png}{parrot.png}
-
-\begin{python}
-from skimage import io, img_as_float32
-import numpy as np
-image_1 = img_as_float32(io.imread('parrot.png'))
-image_2 = image_1
-np.transpose(image_2)
-multiplied_image = np.matmul(image_1, image_2)
-return_val = np.max(multiplied_image)
-print("Index with max value:", return_val)
-\end{python}
-Identify the bugs in this program. Briefly explain what is incorrect and how you used the debugger to identify the issue. Include a photo of the debugger that shows the shapes of the matrices.
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph{A5.2: } Describe the bugs and how you used the debugger here. (3-4 sentences)
+\paragraph{A5.2:} 
+
+(a) Please include an image of your debugging session here.
+
+% Example image inclusion; replace with your result image:
+% \includegraphics[width=\textwidth]{gigi.jpg}
+
+(b) Describe what caused the bug. You can write the corrected lines as your answer below.
 \begin{python}
 # Put the correct code here.
 \end{python}
 
-Include an image of the debugger here:
-% Example image inclusion; replace with your result image:
-% \includegraphics[width=\textwidth]{gigi.jpg}
 
 % Please leave the pagebreak
 \pagebreak
