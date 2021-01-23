@@ -215,13 +215,13 @@ How could we convert it to handle color images using another for loop? Please in
 \pagebreak
 \paragraph{Q3.2:} Next, imagine we wanted to process 1000 images in the same way, but we weren't sure if our program was fast enough in execution time to cope with that many images. 
 
-(a) Please time your code execution!
+(a) Please time your code execution for a single image!
+
+\emph{However, let's not assume that the time taken for one image $\times1000$ will equal $1000$ image computations, as single short tasks on multitasking computers often take variable time. Instead, compute the time on a smaller number, say, 10 images, and compute the average time for a single image.}
 
 \emph{When measuring the time, you can ignore file loading. To do so, you should either write your code in a way such that you make copies of the loaded image inside the loop or in a way such that you load the image in a loop, but only time the modification. You can also assume that all images are of equal resolution to our initial image---we only need to use \href{grizzlypeak.jpg}{grizzlypeak.jpg} for this question.}
 
-\emph{Don't assume that the time taken for one image $\times1000$ will equal $1000$ image computations, as single short tasks on multitasking computers often take variable time. But, running the code on 1000 images might take 45 minutes or more! Instead, compute the time on a smaller number, say, 10 images, and compute the average time.}
-
-(b) You might find the code is too slow to handle 1000 images---why is it slow? Let's speed it up. Using what we learned in our Python tutorial, write code for a sped-up version.
+(b) You might find the code would be too slow to handle 1000 images---why is it slow? Let's speed it up. Using what we learned in our Python tutorial, write code for a sped-up version.
 
 (c) Time the execution of your faster code---use an appropriate number of images to get a reliable estimate. How much faster is the new version, as a multiplicative factor? (eg., 2$\times$, 5$\times$.)
 
