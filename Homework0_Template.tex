@@ -78,7 +78,7 @@
 \section*{Instructions}
 \begin{itemize}
   \item Complete the setup checklist.
-  \item 6 questions.
+  \item 5 questions.
   \item Include code, images, or equations where appropriate.
   \item Please make this document anonymous.
   \item We recommend editing this .tex file in \href{https://www.overleaf.com/}{Overleaf} to ensure the used packages are available. If you use pdfLatex, your distribution (e.g., MiKTeX) needs to have the packages installed..
@@ -150,34 +150,26 @@ $\square$ & Violation \\
 % Please leave the pagebreak
 \pagebreak
 
-\paragraph{Q2:} Computer vision is all around us, sometimes in surprising ways. If you could have any computer vision related superpower, with no limitations, what would it be? How would you use it? [2-3 sentences]
+\paragraph{Q2.1:} Computer vision is all around us, sometimes in surprising ways. If you could have any computer vision related superpower, with no limitations, what would it be? How would you use it? [2-3 sentences]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph{A2:} Your answer here.
-
+\paragraph{A2.1:} Your answer here.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-% Please leave the pagebreak
-\pagebreak
-
-\paragraph{Q3:}  All of you are entering this course with different backgrounds in socially responsible computing. The STAs have developed a brief, two-page ethics overview \href{https://docs.google.com/document/d/10_zQFB4aNr7WF9q3r5aQcBuco0TKSgyF5rsL7nKgGfQ/edit?usp=sharing}{here} to help get everyone on the same page. Please review this document now. 
+\paragraph{Q2.2:} All of you are entering this course with different backgrounds in socially responsible computing. The STAs have developed a brief two-page ethics overview  \href{https://docs.google.com/document/d/10_zQFB4aNr7WF9q3r5aQcBuco0TKSgyF5rsL7nKgGfQ/edit?usp=sharing}{here} to help get everyone on the same page. Please review this document now. 
 
 Please list at least three values that are at stake if you use your superpower as intended (or if your archenemy misused your superpower). As a utilitarian, how would you evaluate your new superpower? As a Kantian deontologist? To what extent do you agree with each perspective and why? Do you see any limitations to these ethical frameworks? [6-7 sentences]
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph{A3:} Your answer here.
-
+\paragraph{A2.2:} Your answer here.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 % Please leave the pagebreak
 \pagebreak
-
-\paragraph{Q4.1:} Here is an image: \href{run:images/grizzlypeakg.png}{grizzlypeakg.png} (in images folder)
+\paragraph{Q3.1:} Here is an image: \href{run:images/grizzlypeakg.png}{grizzlypeakg.png} (in images folder)
 
 We wish to set all pixels that have a value of 50 or less to 0, to remove some of the lower-intensity haze around the bright lights. However, our code only works on single-channel grayscale images.
 
@@ -197,7 +189,7 @@ How could we convert it to handle color images using another for loop? Please in
 \emph{Image:} \href{images/grizzlypeak.jpg}{grizzlypeak.jpg} (also in images folder) is a color version of the same image.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph{A4.1:} Your written answer here. (1-2 sentences)
+\paragraph{A3.1:} Your written answer here. (1-2 sentences)
 \begin{python}
 # Your code goes here
 \end{python}
@@ -207,7 +199,7 @@ How could we convert it to handle color images using another for loop? Please in
 
 % Please leave the pagebreak
 \pagebreak
-\paragraph{Q4.2:} Next, imagine we wanted to process 1000 images in the same way, but we weren't sure if our program was fast enough in execution time to cope with that many images. 
+\paragraph{Q3.2:} Next, imagine we wanted to process 1000 images in the same way, but we weren't sure if our program was fast enough in execution time to cope with that many images. 
 
 (a) Please time your code execution for a single image!
 
@@ -220,7 +212,7 @@ How could we convert it to handle color images using another for loop? Please in
 (c) Time the execution of your faster code for a single image---use an appropriate number of images to get a reliable estimate. How much faster is the new version, as a multiplicative factor? (eg., 2$\times$, 5$\times$.)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph{A4.2:}
+\paragraph{A3.2:}
 
 (a) Your written answer here. (1-2 sentences)
 
@@ -231,14 +223,14 @@ How could we convert it to handle color images using another for loop? Please in
 
 (c) Your written answer here. (1-2 sentences)
 
-\pagebreak{A4.2:} (Extra Space)
+\pagebreak{A3.2:} (Extra Space)
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Please leave the pagebreak
 \pagebreak
-\paragraph{Q5:} We wish to reduce the brightness of an image by editing the values in its matrix. But, when trying to visualize the result, we see some ``errors''.
+\paragraph{Q4:} We wish to reduce the brightness of an image by editing the values in its matrix. But, when trying to visualize the result, we see some ``errors''.
 
 \emph{Image:} \href{images/gigi.jpg}{gigi.jpg} (in images folder)
 
@@ -256,7 +248,7 @@ plt.show()
 What is incorrect with this approach? How can it be fixed while maintaining the same intended brightness reduction? Please include your code as well as the original image and result image.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph{A5:} Your written answer here. (2-3 sentences)
+\paragraph{A4:} Your written answer here. (2-3 sentences)
 \begin{python}
 # Your code goes here
 \end{python}
@@ -270,7 +262,7 @@ Result image here:
 % \includegraphics[width=\textwidth]{your_image_here.jpg}
 
 \pagebreak
-\paragraph{A5:} (Extra Space)
+\paragraph{A4:} (Extra Space)
 
 
 
@@ -278,7 +270,7 @@ Result image here:
 
 % Please leave the pagebreak
 \pagebreak
-\paragraph{Q6.1: Debugging---Control Flow} Next, please show us that you can use the debugger within VSCode---we'd like to make sure everyone is set up and can use it correctly. 
+\paragraph{Q5.1: Debugging---Control Flow} Next, please show us that you can use the debugger within VSCode---we'd like to make sure everyone is set up and can use it correctly. 
 
 Imagine our task is to create a crop of an image that starts at the center of the image and extends to the lower right corner of the image. If all goes well, we should only see content from the lower right region of the original image.
 
@@ -321,7 +313,7 @@ At this point, you might have an idea of how to fix the code. But, before stoppi
 Do we now see the correct output?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph{A6.1: } (a) Re-execute the debugger, and capture a screenshot showing your use of the Debug Console and inspection of a variable. Please include it below.
+\paragraph{A5.1: } (a) Re-execute the debugger, and capture a screenshot showing your use of the Debug Console and inspection of a variable. Please include it below.
 
 % Example image inclusion; replace with your result image:
 % \includegraphics[width=\textwidth]{your_image_here.jpg}
@@ -334,13 +326,13 @@ Do we now see the correct output?
 
 % Please leave the pagebreak
 \pagebreak
-\paragraph{A6.1:}
+\paragraph{A5.1:}
 (Extra space)
 
 % Please leave the pagebreak
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pagebreak
-\paragraph{Q6.2: Debugging---Exceptions} This program should print out the maximum value in the matrix obtained by multiplying a random non-square matrix with its transpose.
+\paragraph{Q5.2: Debugging---Exceptions} This program should print out the maximum value in the matrix obtained by multiplying a random non-square matrix with its transpose.
 
 Here, we're using some numpy functions that may be new to us, but they each have self-explanatory names.
 
@@ -364,7 +356,7 @@ Run the code in a debugging session, note the exception, and inspect the variabl
 \emph{Hint: Remember rules about matrix multiplication. What should the dimensions of each matrix be? Use the debugger to notice how the shapes of the images do or do not change.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph{A6.2:} 
+\paragraph{A5.2:} 
 
 (a) Please include an image of your debugging session here.
 
@@ -379,5 +371,5 @@ Run the code in a debugging session, note the exception, and inspect the variabl
 
 % Please leave the pagebreak
 \pagebreak
-\paragraph{A6.2} (Extra space)
+\paragraph{A5.2} (Extra space)
 \end{document}
