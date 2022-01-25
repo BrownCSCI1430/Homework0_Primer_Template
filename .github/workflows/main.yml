@@ -31,9 +31,8 @@ jobs:
           args: -pdf -latexoption=-file-line-error -latexoption=-interaction=nonstopmode # optional, default is -pdf -latexoption=-file-line-error -latexoption=-interaction=nonstopmode
       - name: Commit and Push PDF
         run: |
-          touch Homework0_Template.pdf
           git add Homework0_Template.pdf
-          git config --local user.name 'automated-github-action'
+          git config --local user.name 'github-actions-bot'
           git config --local user.email 'cs1430-github-actions[bot]@users.noreply.github.com'
           git commit -m "Compile written PDF"
           git push
