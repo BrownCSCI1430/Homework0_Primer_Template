@@ -17,16 +17,12 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
+    if: >-
+      github.event.repository.html_url == 'https://github.com/BrownCSCI1430/Homework0_Tutorial_Template'
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - name: LaTeX compilation
-        # You may pin to the exact commit or the version.
-        # uses: dante-ev/latex-action@49cf7cb5f79e7b2006dbdffea85e02bec0b6244b
         uses: dante-ev/latex-action@2021-A
         with:
           root_file: Homework0_Template.tex
@@ -35,6 +31,7 @@ jobs:
           args: -pdf -latexoption=-file-line-error -latexoption=-interaction=nonstopmode # optional, default is -pdf -latexoption=-file-line-error -latexoption=-interaction=nonstopmode
       - name: Commit and Push PDF
         run: |
+          touch Homework0_Template.pdf
           git add Homework0_Template.pdf
           git config --local user.name 'automated-github-action'
           git config --local user.email 'cs1430-github-actions[bot]@users.noreply.github.com'
