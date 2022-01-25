@@ -19,7 +19,7 @@ jobs:
   build:
     # Only compiles PDFs for updates in the main template repository (not student repositories)
     if: >-
-      github.event.repository.html_url == 'https://github.com/BrownCSCI1430/Homework0_Tutorial_Template'
+      github.event.repository.html_url == 'https://github.com/BrownCSCI1430/Homework0_Primer_Template'
     runs-on: ubuntu-latest
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
