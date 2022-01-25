@@ -22,7 +22,7 @@ jobs:
       github.event.repository.html_url == 'https://github.com/BrownCSCI1430/Homework0_Tutorial_Template'
     runs-on: ubuntu-latest
     steps:
-      # Check out repo
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       # Compile .tex file with https://github.com/dante-ev/latex-action
       - name: LaTeX compilation
