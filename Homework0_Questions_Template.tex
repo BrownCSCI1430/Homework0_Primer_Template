@@ -18,7 +18,7 @@
 % https://en.wikibooks.org/wiki/LaTeX
 %
 % Good luck!
-% James and the 1430 staff
+% Srinath and the 1430 staff
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -26,6 +26,8 @@
 
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{xcolor}
 \usepackage[colorlinks = true,
             linkcolor = blue,
             urlcolor  = blue]{hyperref}
@@ -37,10 +39,12 @@
 \usepackage{times}
 \usepackage[shortlabels]{enumitem}
 \setlist[enumerate]{topsep=0pt}
-% a great python code format: https://github.com/olivierverdier/python-latex-highlighting
-\usepackage{pythonhighlight}
-\usepackage{amssymb}
-\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{framed}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+
 % setup for todo lists:
 \usepackage{enumitem}
 \newlist{todolist}{itemize}{2}
@@ -50,6 +54,10 @@
 \newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}%
 \hspace{-2.5pt}}
 
+% a great python code format: https://github.com/olivierverdier/python-latex-highlighting
+\usepackage{pythonhighlight}
+
+\usepackage{trimclip,lipsum}
 
 \frenchspacing
 \setlength{\parindent}{0cm} % Default is 15pt.
@@ -57,9 +65,29 @@
 
 \pagestyle{fancy}
 \fancyhf{}
-\lhead{Homework 0 Questions}
+\lhead{Homework 1 Written Questions}
 \rhead{CSCI 1430}
-\rfoot{\thepage}
+\lfoot{\textcolor{red}{\textbf{Only}
+\ifcase\thepage
+\or \textbf{instructions}
+\or \textbf{A1}
+\or \textbf{A2}
+\or \textbf{A3}
+\or \textbf{A4 (a)}
+\or \textbf{A4 (b)}
+\or \textbf{A5}
+\or \textbf{Q6}
+\or \textbf{A6}
+\or \textbf{A7}
+\or \textbf{A7}
+\or \textbf{feedback}
+\else
+\textbf{[ERROR: PAGE MISALIGNMENT]}
+\fi
+\textbf{should be on this page}
+}}
+\rfoot{\thepage~/ 12}
+
 
 \date{}
 
@@ -68,24 +96,40 @@
 
 \begin{document}
 \maketitle
-\vspace{-2cm}
+\vspace{-3cm}
 \thispagestyle{fancy}
 
-\section*{Instructions}
+\section*{ Document Instructions}
 \begin{itemize}
-  \item Complete the setup checklist.
-  \item 5 questions.
-  \item Include code, images, or equations where appropriate.
-  \item Please make this document anonymous.
-  \item This assignment is \textbf{fixed length}, and the pages have been assigned for you in Gradescope. As a result, \textbf{please do NOT add any new pages}. We will provide ample room for you to answer the questions. If you \emph{really} wish for more space, please add a page \emph{at the end of the document}.
-  \item \textbf{We do NOT expect you to fill up each page with your answer.} Some answers will only be a few sentences long, and that is okay.
-  \item When you are finished, compile this document to a PDF and submit it directly to Gradescope.
 
+  \item 5 questions \textbf{[4 + 4 + 8 + 6 + 4 + 3 + 3 = 32 points]}.
+  \item Fill all your answers within the answer boxes, and \textbf{please do NOT remove the answer box outlines}.
+  \item Questions are highlighted in the \textbf{orange boxes}, bonus questions are highlighted in \textbf{blue boxes}, answers should be recorded in the \textbf{green boxes}.
+  \item Include code, images, and equations where appropriate.
+  \item To identify all places where your responses are expected, search for `TODO'.
+  \item The answer box sizes have been set by the staff beforehand and will truncate your text if it goes beyond the limit. Please make sure your responses fit in the appropriate spaces. \textbf{Extra pages are not permitted unless otherwise specified.}
+  \item Make sure your submission has the right number of pages to validate page alignment sanity (check the footer).
+  \item Please make this document anonymous.
 \end{itemize}
 
-\section*{Setup Checklist (Graded)}
+\section*{ Gradescope Instructions}
+\begin{itemize}
+  \item When you are finished, compile this document to a PDF and submit it directly to Gradescope. 
+  \item The pages will be automatically assigned to the right questions on Gradescope \textit{assuming you do not add any unnecessary pages}. \textbf{Inconsistently assigned pages will lead to a deduction of 2 points per misaligned page (capped at a maximum 6 point deduction).}
+\end{itemize}
 
+\pagebreak
+
+
+\paragraph{Q1:} \textbf{[4 points]}
+\begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black]
 For each of the following, complete the task and check the box to mark it as done.
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=white!5!white,colframe=green!75!black]
+%%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+TODO: Check off all items
+
 \begin{todolist}
     \item[\done] This is an example of a checked box
     \item Read the GitHub tutorial \href{https://browncsci1430.github.io/webpage/resources/github_guide/}{here}.
@@ -95,46 +139,76 @@ For each of the following, complete the task and check the box to mark it as don
     \item Set up the \href{https://browncsci1430.github.io/webpage/resources/python_setup/}{python environment and virtual environment}.
     \item Set up an editing environment (VSCode), get it to use your python virtual environment, and know how to debug within it by setting breakpoints.
     \item Read the \href{https://browncsci1430.github.io/webpage/resources/python_tutorial/}{Python tutorial}.
+%%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{todolist}
+\end{tcolorbox}
 
-\section*{Questions}
+\pagebreak
 
-\paragraph{Q1:} Please find and read the course collaboration policy on the \href{https://browncsci1430.github.io/webpage/#policy-section}{course website} and mark whether each of the following scenarios violates the policy.
+\paragraph{Q2:} 
+\textbf{[4 points]}
+\begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black]
+Please find and read the course collaboration policy on the \href{https://browncsci1430.github.io/webpage/#policy-section}{course website} and mark whether each of the following scenarios violates the policy.
+\end{tcolorbox}
 
-\emph{LaTeX:} To fill in boxes, replace `\textbackslash square' with `\textbackslash blacksquare' for your answer.
+\emph{Note:} To fill in boxes, replace `\textbackslash square' with `\textbackslash blacksquare' for your answer.
 
 \begin{enumerate}[(a)]
 \item
-Another CSCI1430 student looking at your code to help you debug, after you have spent time trying to tackle the bug or have come to TA office hours/Ed.
+Another cs1430 student looking at your code to help you debug, after you have spent time trying to tackle the bug or have come to TA office hours/Ed.
+
+\begin{tcolorbox}[colback=white!5!white,colframe=green!75!black]
+%%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+TODO: Check the right option
 
 \begin{tabular}[h]{ll}
 $\square$ & Acceptable \\
 $\square$ & Violation \\
 \end{tabular}
+%%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{tcolorbox}
 
 \item
 Using the result images from another student's code for your write up because your code is broken.
 
+\begin{tcolorbox}[colback=white!5!white,colframe=green!75!black]
+%%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+TODO: Check the right option
+
 \begin{tabular}[h]{ll}
 $\square$ & Acceptable \\
 $\square$ & Violation \\
 \end{tabular}
+%%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{tcolorbox}
 
 \item
 Googling third party sites to clarify concepts for written and code assignments, with proper citation.
 
+\begin{tcolorbox}[colback=white!5!white,colframe=green!75!black]
+%%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+TODO: Check the right option
+
 \begin{tabular}[h]{ll}
 $\square$ & Acceptable \\
 $\square$ & Violation \\
 \end{tabular}
+%%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{tcolorbox}
 
 \item
 A student who has previously taken the course and is not currently a TA sharing code with you to help you get through a bug.
 
+\begin{tcolorbox}[colback=white!5!white,colframe=green!75!black]
+%%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+TODO: Check the right option
+
 \begin{tabular}[h]{ll}
 $\square$ & Acceptable \\
 $\square$ & Violation \\
 \end{tabular}
+%%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{tcolorbox}
 
 \end{enumerate}
 
@@ -145,119 +219,171 @@ $\square$ & Violation \\
 % Please leave the pagebreak
 \pagebreak
 
-\paragraph{Q2.1:} Computer vision is all around us, sometimes in surprising ways. If you could have any computer vision related superpower, with no limitations, what would it be? How would you use it? [2-3 sentences]
+\paragraph{Q3:} \textbf{[8 points]} Computer vision is all around us, sometimes in surprising ways. Answer the following questions so we can get to know you better :)
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph{A2.1:} Your answer here.
+\begin{enumerate}[(a)]
+    \item 
+\textbf{[1 + 1 points]} 
+\begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black]
+If you could have any computer vision related superpower, with no limitations, what would it be? How would you use it? \textbf{[2-3 sentences]}
+\end{tcolorbox}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{tcolorbox}[colback=white!5!white,colframe=green!75!black]
+    \setbox0=\hbox{\parbox[t]{\textwidth}{
+        %%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        
+        TODO: Your answer for (a) here
+        
+        %%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        }}
+        \clipbox{0pt \dimexpr\dp0-4\baselineskip\relax{} 0in 0pt}{\copy0}
+\end{tcolorbox}
 
-\paragraph{Q2.2:} All students enter the course with different backgrounds in socially responsible computing. Please first review our \href{https://browncsci1430.github.io/webpage/resources/ethics_guide/}{ethics primer} that introduces basic concepts to everyone.
+    \item \textbf{[6 points]}
+All students enter the course with different backgrounds in socially responsible computing. 
 
-Please list at least three values that are at stake if you use your superpower as intended (or if your archenemy misused your superpower). As a utilitarian, how would you evaluate your new superpower? As a Kantian deontologist? To what extent do you agree with each perspective and why? In evaluating your superpower, did you find any limitations to these two ethical frameworks? [6-7 sentences]
+\begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black]
+Please first review our \href{https://browncsci1430.github.io/webpage/resources/ethics_guide/}{ethics primer} that introduces basic concepts to everyone.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph{A2.2:} Your answer here.
+Please list at least three values that are at stake if you use your superpower as intended (or if your archenemy misused your superpower). \textbf{[5-6 sentences]}
+\end{tcolorbox}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{tcolorbox}[colback=white!5!white,colframe=green!75!black]
+    \setbox0=\hbox{\parbox[t]{\textwidth}{
+        %%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        
+        TODO: Your answer for (b) here
+        
+        %%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        }}
+        \clipbox{0pt \dimexpr\dp0-7\baselineskip\relax{} 0in 0pt}{\copy0}
+\end{tcolorbox}
+
+\end{enumerate}
+
 
 
 % Please leave the pagebreak
 \pagebreak
-\paragraph{Q3.1:} Here is an image: \href{run:images/grizzlypeakg.png}{grizzlypeakg.png} (in images folder)
+\paragraph{Q4:} \textbf{[6 points]} Here is an image: \href{run:images/grizzlypeakg.png}{grizzlypeakg.png} (in images folder)
 
-We wish to set all pixels that have a value of 50 or less to 0, to remove some of the lower-intensity haze around the bright lights. However, our code only works on single-channel grayscale images.
+\begin{enumerate}[(a)]
+    \item 
+\textbf{[2 points]}
+Below is some code that sets pixels that have a value of 50 or less to 0. This removes some of the lower-intensity haze around the bright lights. However, the code only works on single-channel grayscale images.
 
+\begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black]
+How could we convert the above code to handle color images? Might we use another for loop?
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw,pad at break*=1mm,colback=white!5!white,colframe=green!75!black,height=10cm]
 \begin{python}
 from skimage import io
 
 A = io.imread('grizzlypeakg.png')
-(height,width) = A.shape
+height, width = A.shape
+
+# TODO: introduce a for loop that allows this 
+# code to work on RGB images
 for i in range(height):
     for j in range(width):
         if A[i,j] <= 50 :
             A[i,j] = 0
 \end{python}
+\end{tcolorbox}
 
-How could we convert it to handle color images using another for loop? Please include your code. \\
+\item \textbf{[4 points]} Imagine we wanted to process 1000 images in the same way, but we weren't sure if our program was fast enough in execution time to cope with that many images. 
 
-\emph{Image:} \href{images/grizzlypeak.jpg}{grizzlypeak.jpg} (also in images folder) is a color version of the same image.
+\begin{enumerate}[(i)]
+    \item \textbf{[2 points]} We could time code execution for a single image (we learned about time execution in the Python tutorial), but it's dangerous to assume that the time taken for one image $\times1000$ will equal $1000$ image computations. This is because a single short tasks on multitasking computers often take variable time. 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph{A3.1:} Your written answer here. (1-2 sentences)
-\begin{python}
-# Your code goes here
-\end{python}
+\begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black]
+Instead, compute the time on a smaller number, say, 10 images, and compute the average time for a single image.
+\end{tcolorbox}
 
+\emph{Note: } When measuring the time, please ignore the file loading. To do so, either write your code in a way such that you make copies of the loaded image inside the loop or in a way such that you load the image in a loop, but only time the modification.
+
+\begin{tcolorbox}[colback=white!5!white,colframe=green!75!black]
+    \setbox0=\hbox{\parbox[t]{\textwidth}{
+    %%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        
+    TODO: Your answer for (b) (i) here
+    
+    %%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    }}
+    \clipbox{0pt \dimexpr\dp0-1\baselineskip\relax{} 0in 0pt}{\copy0}
+\end{tcolorbox}
+
+\item \textbf{[1 point]}
+\begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black]
+ You might find the code would be too slow to handle 1000 images. Why is it slow? Let's speed it up. Using what we learned in our Python tutorial, what single line would replace the logic in the innermost for loop?
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=white!5!white,colframe=green!75!black]
+    %%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    \begin{python}
+    # TODO: Your line here
+    \end{python}
+        
+    \setbox0=\hbox{\parbox[t]{\textwidth}{
+    TODO: Your answer for (b) (ii) here
+    
+    %%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    }}
+    \clipbox{0pt \dimexpr\dp0-2\baselineskip\relax{} 0in 0pt}{\copy0}
+\end{tcolorbox}
+
+\item \textbf{[1 point]}
+\begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black]
+Time the execution of your faster code for a single image. To do this, average out from running over multiple images (say 10) to get a reliable estimate. How much faster is the new version, as a multiplicative factor? (eg., 2$\times$, 5$\times$.)
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=white!5!white,colframe=green!75!black]
+    \setbox0=\hbox{\parbox[t]{\textwidth}{
+    %%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        
+    TODO: Your answer for (b) (iii) here
+    
+    %%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    }}
+    \clipbox{0pt \dimexpr\dp0-1\baselineskip\relax{} 0in 0pt}{\copy0}
+\end{tcolorbox}
+
+\end{enumerate}
+\end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Please leave the pagebreak
 \pagebreak
-\paragraph{Q3.2:} Next, imagine we wanted to process 1000 images in the same way, but we weren't sure if our program was fast enough in execution time to cope with that many images. 
-
-(a) Please time your code execution for a single image! We learned how to time execution in the Python tutorial.
-
-\emph{However, let's not assume that the time taken for one image $\times1000$ will equal $1000$ image computations, as single short tasks on multitasking computers often take variable time. Instead, compute the time on a smaller number, say, 10 images, and compute the average time for a single image.}
-
-\emph{When measuring the time, you can ignore file loading. To do so, you should either write your code in a way such that you make copies of the loaded image inside the loop or in a way such that you load the image in a loop, but only time the modification. You can also assume that all images are of equal resolution to our initial image---we only need to use \href{grizzlypeak.jpg}{grizzlypeak.jpg} for this question.}
-
-(b) You might find the code would be too slow to handle 1000 images---why is it slow? Let's speed it up. Using what we learned in our Python tutorial, write code for a sped-up version.
-
-(c) Time the execution of your faster code for a single image---use an appropriate number of images to get a reliable estimate. How much faster is the new version, as a multiplicative factor? (eg., 2$\times$, 5$\times$.)
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph{A3.2:}
-
-(a) Your written answer here. (1-2 sentences)
-
-(b) 
-\begin{python}
-# Your code goes here
-\end{python}
-
-(c) Your written answer here. (1-2 sentences)
-
-\pagebreak{A3.2:} (Extra Space)
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Please leave the pagebreak
-\pagebreak
-\paragraph{Q4:} We wish to darken an image by editing the values in its matrix. But, when trying to visualize the result, we see some ``errors''.
+    \paragraph{Q5:} \textbf{[3 + 1 points]} We wish to darken an image by editing the values in its matrix. But, when trying to visualize the result, we see some `errors'.
 
 \emph{Image:} \href{images/gigi.jpg}{gigi.jpg} (in images folder)
 
-\begin{python}
-from skimage import io
-import matplotlib.pyplot as plt
-import numpy as np
+\begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black]
+Find out what's incorrect with the approach given below. Then, fix the code such that it maintains the same intended operation, and include the resultant image.
+\end{tcolorbox}
 
-I =  io.imread('gigi.jpg').astype(np.float32)
-I = I - 50
-plt.imshow( I )
-plt.show()
-\end{python}
+\begin{tcolorbox}[colback=white!5!white,colframe=green!75!black,height fill]
+    \begin{python}
+    from skimage import io
+    import matplotlib.pyplot as plt
+    import numpy as np
+    
+    # TODO: fix the issue that's causing the unwanted artefacts
+    # ('errors') in the output image
+    I = io.imread('gigi.jpg').astype(np.float32)
+    I = I - 50
+    plt.imshow(I)
+    plt.show()
+    \end{python}
+    
+    \includegraphics[width=0.5\textwidth,height=7cm,keepaspectratio]{images/TODO wall-e.jpg}
 
-What is incorrect with this approach? How can it be fixed while maintaining the same intended operation? Please include your code as well as the original image and result image.
+\end{tcolorbox}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph{A4:} Your written answer here. (2-3 sentences)
-\begin{python}
-# Your code goes here
-\end{python}
 
-Original image here:
-% Example image inclusion; replace with your original image:
-% \includegraphics[width=\textwidth]{your_image_here.jpg}
-
-Result image here:
-% Example image inclusion; replace with your result image:
-% \includegraphics[width=\textwidth]{your_image_here.jpg}
-
-\pagebreak
-\paragraph{A4:} (Extra Space)
 
 
 
@@ -265,7 +391,9 @@ Result image here:
 
 % Please leave the pagebreak
 \pagebreak
-\paragraph{Q5.1: Debugging---Control Flow} Next, please show us that you can use the debugger within VSCode---we'd like to make sure everyone is set up and can use it correctly. 
+\paragraph{Q6:} \textbf{[2 + 1 points]}
+
+The debugger within VSCode is an important tool you can use to discover potential bugs in the code that you right.
 
 Imagine our task is to create a crop of an image that starts at the center of the image and extends to the lower right corner of the image. If all goes well, we should only see content from the lower right region of the original image.
 
@@ -285,6 +413,7 @@ plt.imshow(croppedImage)
 plt.show()
 \end{python}
 
+\begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black,enhanced jigsaw,breakable,pad at break*=1mm]
 Create a new python file in the same directory as the image, and copy in the above code block. Then, open the file in VSCode, and execute the code within a debugging session by pressing F5 (or `Run $\rightarrow$ Start Debugging'). At the prompt, we wish to `Debug the currently active Python file'.
 
 The output is not currently what we want, so let's stop execution and then identify the bug in this program:
@@ -305,29 +434,25 @@ At this point, you might have an idea of how to fix the code. But, before stoppi
     \item From this point, execute the rest of the code by Continuing beyond our current paused position in the code. Press F5 to Continue (or `Run $\rightarrow$ Continue').
 \end{enumerate}
 
-Do we now see the correct output?
+\end{tcolorbox}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph{A5.1: } (a) Re-execute the debugger, and capture a screenshot showing your use of the Debug Console and inspection of a variable. Please include it below.
 
-% Example image inclusion; replace with your result image:
-% \includegraphics[width=\textwidth]{your_image_here.jpg}
+Re-execute the debugger, and capture a screenshot showing your use of the Debug Console and inspection of a variable. Also, write the correct code below.
 
-(b) Below in writing, please describe what caused the bug. In addition to your written response, please also write the corrected lines as your answer below.
-\begin{python}
-# Put the correct code here.
-\end{python}
+\begin{tcolorbox}[colback=white!5!white,colframe=green!75!black,height=8cm,height fill]
+    \includegraphics[width=0.5\textwidth,height=7cm,keepaspectratio]{images/TODO wall-e.jpg}
+    
+    \begin{python}
+    # TODO: paste your code here
+    \end{python}
+\end{tcolorbox}
 
 
-% Please leave the pagebreak
-\pagebreak
-\paragraph{A5.1:}
-(Extra space)
 
-% Please leave the pagebreak
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pagebreak
-\paragraph{Q5.2: Debugging---Exceptions} This program should print out the maximum value in the matrix obtained by multiplying a random non-square matrix with its transpose.
+\paragraph{Q7:} \textbf{[2 + 1 points]} This program should print out the maximum value in the matrix obtained by multiplying a random non-square matrix with its transpose.
 
 Here, we're using some numpy functions that may be new to us, but they each have self-explanatory names.
 
@@ -344,27 +469,49 @@ mat_max = np.max(mat_3)
 print("Max value:", mat_max)
 \end{python}
 
-This time, when we execute the code, it will exception.
+This time, when we execute the code, it will raise an exception.
 
-Run the code in a debugging session, note the exception, and inspect the variables. Form a hypothesis for the error, and use the Debug Console to test that it prevents the exception. Capture a screenshot of your session showing us the issue and your fix.
+\begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black]
+Run the code in a debugging session, note the exception, and inspect the variables. Form a hypothesis for the error, and use the Debug Console to test that it prevents the exception. 
+\end{tcolorbox}
 
 \emph{Hint: Remember rules about matrix multiplication. What should the dimensions of each matrix be? Use the debugger to notice how the shapes of the images do or do not change.}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph{A5.2:} 
+Capture a screenshot of your session showing us the issue and paste the correct code.
 
-(a) Please include an image of your debugging session here.
+\begin{tcolorbox}[colback=white!5!white,colframe=green!75!black,breakable,height=15cm,enhanced jigsaw,pad at break*=1mm]
+    \includegraphics[width=0.5\textwidth,height=7cm,keepaspectratio]{images/TODO wall-e.jpg}
+    
+    \begin{python}
+    # TODO: paste your code here
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    ################################################
+    # YOU MAY USE THIS ADDITIONAL SPACE
+    
+    # WARNING: IF YOU DON'T END UP USING THIS SPACE
+    # KEEP THESE COMMENTS TO MAINTAIN PAGE ALIGNMENT
+    ################################################
+    \end{python}
+    
+\end{tcolorbox}
 
-% Example image inclusion; replace with your result image:
-% \includegraphics[width=\textwidth]{gigi.jpg}
-
-(b) Describe what caused the bug. You can write the corrected lines as your answer below.
-\begin{python}
-# Put the correct code here.
-\end{python}
-
-
-% Please leave the pagebreak
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% any suggestions for more?
 \pagebreak
-\paragraph{A5.2} (Extra space)
+\section*{Feedback? (Optional)}
+Please help us make the course better. If you have any feedback for this assignment, we'd love to hear it!
 \end{document}
