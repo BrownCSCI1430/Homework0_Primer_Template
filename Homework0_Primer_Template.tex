@@ -74,7 +74,8 @@
 \or \textbf{A2}
 \or \textbf{A3}
 \or \textbf{A4 (a)}
-\or \textbf{A4 (b)}
+\or \textbf{A4 (b) (i) - (ii)}
+\or \textbf{A4 (b) (ii)}
 \or \textbf{A5}
 \or \textbf{Q6}
 \or \textbf{A6}
@@ -86,7 +87,7 @@
 \fi
 \textbf{should be on this page}
 }}
-\rfoot{\thepage~/ 12}
+\rfoot{\thepage~/ 13}
 
 
 \date{}
@@ -223,9 +224,9 @@ $\square$ & Violation \\
 
 \begin{enumerate}[(a)]
     \item 
-\textbf{[1 + 1 points]} 
+\textbf{[2 points]} 
 \begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black]
-If you could have any computer vision related superpower, with no limitations, what would it be? How would you use it? \textbf{[2-3 sentences]}
+If you could have any computer vision related superpower, with no limitations, what would it be and how would you use it? \textbf{[2-3 sentences]}
 \end{tcolorbox}
 
 \begin{tcolorbox}[colback=white!5!white,colframe=green!75!black]
@@ -239,25 +240,46 @@ If you could have any computer vision related superpower, with no limitations, w
         \clipbox{0pt \dimexpr\dp0-4\baselineskip\relax{} 0in 0pt}{\copy0}
 \end{tcolorbox}
 
+
+
     \item \textbf{[6 points]}
-All students enter the course with different backgrounds in socially responsible computing. 
+All students enter the course with different backgrounds in socially responsible computing. Please first review our \href{https://browncsci1430.github.io/webpage/resources/ethics_guide/}{ethics primer} that introduces basic concepts to everyone.
 
-\begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black]
-Please first review our \href{https://browncsci1430.github.io/webpage/resources/ethics_guide/}{ethics primer} that introduces basic concepts to everyone.
-
-Please list at least three values that are at stake if you use your superpower as intended (or if your archenemy misused your superpower). \textbf{[5-6 sentences]}
-\end{tcolorbox}
-
-\begin{tcolorbox}[colback=white!5!white,colframe=green!75!black]
-    \setbox0=\hbox{\parbox[t]{\textwidth}{
-        %%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        
-        TODO: Your answer for (b) here
-        
-        %%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        }}
-        \clipbox{0pt \dimexpr\dp0-7\baselineskip\relax{} 0in 0pt}{\copy0}
-\end{tcolorbox}
+    \begin{enumerate}[(i)]
+    \item \textbf{[3 points]}
+    \begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black]
+    
+    List at least one value that is at stake if you use your superpower as intended. Explain your reasoning. \textbf{[2-3 sentences]}
+    \end{tcolorbox}
+    
+    \begin{tcolorbox}[colback=white!5!white,colframe=green!75!black]
+        \setbox0=\hbox{\parbox[t]{\textwidth}{
+            %%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            
+            TODO: Your answer for (b) here
+            
+            %%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            }}
+            \clipbox{0pt \dimexpr\dp0-5\baselineskip\relax{} 0in 0pt}{\copy0}
+    \end{tcolorbox}
+    \item \textbf{[3 points]}
+    \begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black]
+    
+    List at least one value that is at stake if your archenemy misused your superpower. Explain your reasoning. \textbf{[2-3 sentences]}
+    \end{tcolorbox}
+    
+    \begin{tcolorbox}[colback=white!5!white,colframe=green!75!black]
+        \setbox0=\hbox{\parbox[t]{\textwidth}{
+            %%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            
+            TODO: Your answer for (b) here
+            
+            %%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            }}
+            \clipbox{0pt \dimexpr\dp0-5\baselineskip\relax{} 0in 0pt}{\copy0}
+    \end{tcolorbox}
+    
+    \end{enumerate}
 
 \end{enumerate}
 
@@ -298,12 +320,15 @@ for i in range(height):
     \item \textbf{[2 points]} We could time code execution for a single image (we learned about time execution in the Python tutorial), but it's dangerous to assume that the time taken for one image $\times1000$ will equal $1000$ image computations. This is because a single short tasks on multitasking computers often take variable time. 
 
 \begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black]
-Instead, compute the time on a smaller number, say, 10 images, and compute the average time for a single image.
+Instead, compute the time on a smaller number, say, 10 images, and compute the average time for a single image. Also, show us your code so we can check how you did it!
 \end{tcolorbox}
 
 \emph{Note: } When measuring the time, please ignore the file loading. To do so, either write your code in a way such that you make copies of the loaded image inside the loop or in a way such that you load the image in a loop, but only time the modification.
 
-\begin{tcolorbox}[colback=white!5!white,colframe=green!75!black]
+\begin{tcolorbox}[colback=white!5!white,colframe=green!75!black,height=10cm]
+\begin{python}
+# TODO: your code here
+\end{python}
     \setbox0=\hbox{\parbox[t]{\textwidth}{
     %%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
         
@@ -316,10 +341,10 @@ Instead, compute the time on a smaller number, say, 10 images, and compute the a
 
 \item \textbf{[1 point]}
 \begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black]
- You might find the code would be too slow to handle 1000 images. Why is it slow? Let's speed it up. Using what we learned in our Python tutorial, what single line would replace the logic in the innermost for loop?
+ You might find the code would be too slow to handle 1000 images. Why is it slow? Let's speed it up. Using what we learned in our Python tutorial, what would replace the logic in the innermost for loop?
 \end{tcolorbox}
 
-\begin{tcolorbox}[colback=white!5!white,colframe=green!75!black]
+\begin{tcolorbox}[colback=white!5!white,colframe=green!75!black,height=3cm]
     %%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
     \begin{python}
