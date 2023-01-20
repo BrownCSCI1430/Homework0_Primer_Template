@@ -73,10 +73,11 @@
 \or \textbf{A1}
 \or \textbf{A2}
 \or \textbf{A3}
-\or \textbf{A4 (a)}
-\or \textbf{A4 (b) (i) - (ii)}
-\or \textbf{A4 (b) (iii)}
-\or \textbf{A5}
+\or \textbf{A4 (a) (i)}
+\or \textbf{A4 (a) (ii) and A4 (b) (i)}
+\or \textbf{A4 (b) (ii)}
+\or \textbf{A5 (a) and A5 (b) (i)}
+\or \textbf{A5 (b) (ii) and A5 (c)}
 \or \textbf{Q6}
 \or \textbf{A6}
 \or \textbf{A7}
@@ -87,7 +88,7 @@
 \fi
 \textbf{should be on this page}
 }}
-\rfoot{\thepage~/ 13}
+\rfoot{\thepage~/ 14}
 
 
 \date{}
@@ -287,22 +288,23 @@ All students enter the course with different backgrounds in socially responsible
 
 % Please leave the pagebreak
 \pagebreak
-\paragraph{Q4:} \textbf{[6 points]} Here is an image: \href{run:images/grizzlypeakg.png}{grizzlypeakg.png} (in images folder)
+\paragraph{Q4:} \textbf{[6 points]} Here is an image: \href{run:images/grizzlypeak-grayscale.png}{grizzlypeak-grayscale.png} (in the images folder)
 
 \begin{enumerate}[(a)]
     \item 
+    \begin{enumerate}[(i)] \item
 \textbf{[2 points]}
 Below is some code that sets pixels that have a value of 50 or less to 0. This removes some of the lower-intensity haze around the bright lights. However, the code only works on single-channel grayscale images.
 
 \begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black]
-How could we convert the above code to handle color images? Might we use another for loop?
+Using a for loop and other appropriate modifications, convert the following code to work on \href{run:images/grizzlypeak-color.png}{grizzlypeak-color.png} (also in the images folder).
 \end{tcolorbox}
 
 \begin{tcolorbox}[enhanced jigsaw,pad at break*=1mm,colback=white!5!white,colframe=green!75!black,height=10cm]
 \begin{python}
 from skimage import io
 
-A = io.imread('grizzlypeakg.png')
+A = io.imread('grizzlypeak-grayscale.png')
 height, width = A.shape
 
 # TODO: introduce a for loop that allows this 
@@ -314,16 +316,14 @@ for i in range(height):
 \end{python}
 \end{tcolorbox}
 
-\item \textbf{[4 points]} Imagine we wanted to process 1000 images in the same way, but we weren't sure if our program was fast enough in execution time to cope with that many images. 
-
-\begin{enumerate}[(i)]
-    \item \textbf{[2 points]} We could time code execution for a single image (we learned about time execution in the Python tutorial), but it's dangerous to assume that the time taken for one image $\times1000$ will equal $1000$ image computations. This is because a single short tasks on multitasking computers often take variable time. 
+\item
+\textbf{[1 points]} Let's find the time it takes to run this operation once. Because a single short task on multitasking computers often takes variable time, we can record how long code execution takes on a small number of images and then average the execution time.
 
 \begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black]
-Instead, compute the time on a smaller number, say, 10 images, and compute the average time for a single image. Also, show us your code so we can check how you did it!
+Record how long it takes to execute 10 times. How long does it take to change the pixel values once? Please include your code.
 \end{tcolorbox}
 
-\emph{Note: } When measuring the time, please ignore the file loading. To do so, either write your code in a way such that you make copies of the loaded image inside the loop or in a way such that you load the image in a loop, but only time the modification.
+\emph{Note: } When measuring the time, please ignore the file loading. You should only time the image modification itself.
 
 \begin{tcolorbox}[colback=white!5!white,colframe=green!75!black,height=10cm]
 \begin{python}
@@ -332,43 +332,43 @@ Instead, compute the time on a smaller number, say, 10 images, and compute the a
     \setbox0=\hbox{\parbox[t]{\textwidth}{
     %%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
         
-    TODO: Your answer for (b) (i) here %%%%%% Remove this line in your answer! %%%%%%
+    TODO: Your answer for (a) (ii) here %%%%%% Remove this line in your answer! %%%%%%
     
     %%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     }}
     \clipbox{0pt \dimexpr\dp0-1\baselineskip\relax{} 0in 0pt}{\copy0}
 \end{tcolorbox}
 
-\item \textbf{[1 point]}
-\begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black]
- You might find the code would be too slow to handle 1000 images. Why is it slow? Let's speed it up. Using what we learned in our Python tutorial, what would replace the logic in the innermost for loop?
+\end{enumerate}
+
+\item \textbf{[3 points]} Let's say we want to run our image modification 1000 times. If we used our current implementation, it would be really slow. Why might that be? We think we can find a faster solution.
+
+\begin{enumerate}[(i)]
+\item \textbf{[2 point]}
+\begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black] 
+Using logical indexing (see the Python tutorial), find a faster solution to remove the haze. 
 \end{tcolorbox}
 
 \begin{tcolorbox}[colback=white!5!white,colframe=green!75!black,height=3cm]
-    %%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    
     \begin{python}
-    # TODO: Your line here
+    # TODO: Your code here
     \end{python}
-        
-    \setbox0=\hbox{\parbox[t]{\textwidth}{
-    TODO: Your answer for (b) (ii) here %%%%%% Remove this line in your answer! %%%%%%
-    
-    %%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    }}
-    \clipbox{0pt \dimexpr\dp0-2\baselineskip\relax{} 0in 0pt}{\copy0}
 \end{tcolorbox}
 
 \item \textbf{[1 point]}
 \begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black]
-Time the execution of your faster code for a single image. To do this, average out from running over multiple images (say 10) to get a reliable estimate. How much faster is the new version, as a multiplicative factor? (eg., 2$\times$, 5$\times$.)
+Now, using your optimized solution, record how long it takes to change the pixel values 1000 times. How long does the new code take to change the pixel values on one image? How much faster is the new version per image, as a
+multiplicative factor (eg: 2×, 5×)? Please include your code.
 \end{tcolorbox}
 
-\begin{tcolorbox}[colback=white!5!white,colframe=green!75!black]
+\begin{tcolorbox}[colback=white!5!white,colframe=green!75!black,height=10cm]
+\begin{python}
+# TODO: your code here
+\end{python}
     \setbox0=\hbox{\parbox[t]{\textwidth}{
     %%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
         
-    TODO: Your answer for (b) (iii) here %%%%%% Remove this line in your answer! %%%%%%
+    TODO: Your answer for (b) (ii) here %%%%%% Remove this line in your answer! %%%%%%
     
     %%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     }}
@@ -382,34 +382,75 @@ Time the execution of your faster code for a single image. To do this, average o
 
 % Please leave the pagebreak
 \pagebreak
-    \paragraph{Q5:} \textbf{[3 + 1 points]} We wish to darken an image by editing the values in its matrix. But, when trying to visualize the result, we see some `errors'.
+    \paragraph{Q5:} \textbf{[4 points]} Your friend tries to write code which reads in an image and displays it. 
+    
+    \begin{python}
+        from skimage import io
+        import matplotlib.pyplot as plt
+        import numpy as np
 
-\emph{Image:} \href{images/gigi.jpg}{gigi.jpg} (in images folder)
+        I = io.imread('gigi.jpg').astype(float32)
+        plt.imshow(I)
+        plt.show()
+    \end{python}
+    
+    However, when they run the code, the image is almost entirely white. Confused, they come to you for help.
 
+\begin{enumerate} [(a)]
+    \item \textbf{[1 point]}
 \begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black]
-Find out what's incorrect with the approach given below. Then, fix the code such that it maintains the same intended operation, and include the resultant image.
+Why is the image being displayed incorrectly? \emph{Hint: check the data type of the image and the range of the numbers being read in}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=white!5!white,colframe=green!75!black, height=3cm]
+    %%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        
+    TODO: Your answer for (a) here %%%%%% Remove this line in your answer! %%%%%%
+
+    %%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{tcolorbox}
+
+\item \textbf{[2 points]} You and your friend think of two possible ways to display the image correctly: making sure all of the floats are in the correct range (0 - 1) or using integers instead of floats.
+\begin{enumerate} [(i)]
+
+\item \textbf{[1 point]}
+\begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black]
+Write a possible fix that still uses the float data type.
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=white!5!white,colframe=green!75!black, height=4cm]
+\begin{python}
+# TODO: your code here
+\end{python}
+\end{tcolorbox}
+
+\item \textbf{[2 point]}
+\begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black]
+Write a possible fix using the signed integer data type.
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=white!5!white,colframe=green!75!black, height=4cm]
+\begin{python}
+# TODO: your code here
+\end{python}
+\end{tcolorbox}
+\end{enumerate}
+
+\item \textbf{[1 point]} Another friend comes to you and wants help darkening an image. With your newly functioning image display code, you decide to help!
+\begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black]
+Using your answer from part (b) (ii), read in 'gigi.png', darken the pixel intensities by 50, and display the new image. Include your code and a screenshot of the darkened image.
 \end{tcolorbox}
 
 \begin{tcolorbox}[colback=white!5!white,colframe=green!75!black,height fill]
     \begin{python}
-    from skimage import io
-    import matplotlib.pyplot as plt
-    import numpy as np
-    
-    # TODO: fix the issue that's causing the unwanted artefacts
-    # ('errors') in the output image
-    I = io.imread('gigi.jpg').astype(np.float32)
-    I = I - 50
-    plt.imshow(I)
-    plt.show()
+    # TODO: your code here
     \end{python}
     
     \includegraphics[width=0.5\textwidth,height=7cm,keepaspectratio]{images/TODO_gigi_result.png}
 
 \end{tcolorbox}
-
-
-
+\end{enumerate}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -459,17 +500,14 @@ At this point, you might have an idea of how to fix the code. But, before stoppi
     \item From this point, execute the rest of the code by Continuing beyond our current paused position in the code. Press F5 to Continue (or `Run $\rightarrow$ Continue').
 \end{enumerate}
 
-\end{tcolorbox}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 Re-execute the debugger, and capture a screenshot showing your use of the Debug Console and inspection of a variable. Also, write the correct code below.
+\end{tcolorbox}
 
 \begin{tcolorbox}[colback=white!5!white,colframe=green!75!black,height=8cm,height fill]
     \includegraphics[width=0.5\textwidth,height=7cm,keepaspectratio]{images/TODO_debugger_snap.jpg}
     
     \begin{python}
-    # TODO: paste your code here %%%%%% Remove this line in your answer! %%%%%%
+    # TODO: paste your code here 
     \end{python}
 \end{tcolorbox}
 
