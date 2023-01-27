@@ -70,18 +70,18 @@
 \lfoot{\textcolor{red}{\textbf{Only}
 \ifcase\thepage
 \or \textbf{instructions}
-\or \textbf{A1}
-\or \textbf{A2}
-\or \textbf{A3}
-\or \textbf{A4 (a) (i)}
-\or \textbf{A4 (a) (ii) and A4 (b) (i)}
-\or \textbf{A4 (b) (ii)}
-\or \textbf{A5 (a) and A5 (b) (i)}
-\or \textbf{A5 (b) (ii) and A5 (c)}
+\or \textbf{Q1}
+\or \textbf{Q2}
+\or \textbf{Q3}
+\or \textbf{Q4 (a) (i)}
+\or \textbf{Q4 (a) (ii) and Q4 (b) (i)}
+\or \textbf{Q4 (b) (ii)}
+\or \textbf{Q5 (a) and Q5 (b) (i)}
+\or \textbf{Q5 (b) (ii) and Q5 (c)}
 \or \textbf{Q6}
-\or \textbf{A6}
-\or \textbf{A7}
-\or \textbf{A7}
+\or \textbf{Q6}
+\or \textbf{Q7}
+\or \textbf{Q7}
 \or \textbf{feedback}
 \else
 \textbf{[ERROR: PAGE MISALIGNMENT]}
@@ -234,7 +234,6 @@ If you could have any computer vision related superpower, with no limitations, w
     \setbox0=\hbox{\parbox[t]{\textwidth}{
         %%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
         
-        TODO: Your answer for (a) here %%%%%% Remove this line in your answer! %%%%%%
         
         %%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         }}
@@ -256,8 +255,7 @@ All students enter the course with different backgrounds in socially responsible
     \begin{tcolorbox}[colback=white!5!white,colframe=green!75!black]
         \setbox0=\hbox{\parbox[t]{\textwidth}{
             %%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            
-            TODO: Your answer for (b) here %%%%%% Remove this line in your answer! %%%%%%
+        
             
             %%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             }}
@@ -273,7 +271,6 @@ All students enter the course with different backgrounds in socially responsible
         \setbox0=\hbox{\parbox[t]{\textwidth}{
             %%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
             
-            TODO: Your answer for (b) here %%%%%% Remove this line in your answer! %%%%%%
             
             %%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             }}
@@ -297,10 +294,12 @@ All students enter the course with different backgrounds in socially responsible
 Below is some code that sets pixels that have a value of 50 or less to 0. This removes some of the lower-intensity haze around the bright lights. However, the code only works on single-channel grayscale images.
 
 \begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black]
-Using a for loop and other appropriate modifications, convert the following code to work on \href{run:images/grizzlypeak-color.png}{grizzlypeak-color.png} (also in the images folder).
+Using another for loop and other appropriate modifications, convert the following code to work on \href{run:images/grizzlypeak-color.png}{grizzlypeak-color.png} (also in the images folder).
 \end{tcolorbox}
 
 \begin{tcolorbox}[enhanced jigsaw,pad at break*=1mm,colback=white!5!white,colframe=green!75!black,height=10cm]
+%%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+TODO: Modify the following code:
 \begin{python}
 from skimage import io
 
@@ -314,6 +313,8 @@ for i in range(height):
         if A[i,j] <= 50 :
             A[i,j] = 0
 \end{python}
+
+%%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{tcolorbox}
 
 \item
@@ -341,7 +342,7 @@ Record how long it takes to execute 10 times. How long does it take to change th
 
 \end{enumerate}
 
-\item \textbf{[3 points]} Let's say we want to run our image modification 1000 times. If we used our current implementation, it would be really slow. Why might that be? We think we can find a faster solution.
+\item \textbf{[3 points]} Let's say we want to run our image modification 1000 times. If we used our current implementation, it would be slow. Why might that be? We think we can find a faster solution.
 
 \begin{enumerate}[(i)]
 \item \textbf{[2 point]}
@@ -349,12 +350,17 @@ Record how long it takes to execute 10 times. How long does it take to change th
 Using logical indexing (see the Python tutorial), find a faster solution to remove the haze. 
 \end{tcolorbox}
 
-\begin{tcolorbox}[colback=white!5!white,colframe=green!75!black,height=3cm]
+\begin{tcolorbox}[colback=white!5!white,colframe=green!75!black,height=6cm]
+    %%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \begin{python}
     # TODO: Your code here
+    
     \end{python}
+    %%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{tcolorbox}
 
+% Please leave the pagebreak
+\pagebreak
 \item \textbf{[1 point]}
 \begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black]
 Now, using your optimized solution, record how long it takes to change the pixel values 1000 times. How long does the new code take to change the pixel values on one image? How much faster is the new version per image, as a
@@ -362,17 +368,16 @@ multiplicative factor (eg: 2×, 5×)? Please include your code.
 \end{tcolorbox}
 
 \begin{tcolorbox}[colback=white!5!white,colframe=green!75!black,height=10cm]
-\begin{python}
-# TODO: your code here
-\end{python}
-    \setbox0=\hbox{\parbox[t]{\textwidth}{
     %%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        
-    TODO: Your answer for (b) (ii) here %%%%%% Remove this line in your answer! %%%%%%
+    \begin{python}
+    # TODO: your code here
+    \end{python}
+
+    TODO: Your answer for (b) (ii) here 
+    %%%%%% Remove this line in your answer! %%%%%%
     
     %%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    }}
-    \clipbox{0pt \dimexpr\dp0-1\baselineskip\relax{} 0in 0pt}{\copy0}
+    
 \end{tcolorbox}
 
 \end{enumerate}
@@ -382,7 +387,7 @@ multiplicative factor (eg: 2×, 5×)? Please include your code.
 
 % Please leave the pagebreak
 \pagebreak
-    \paragraph{Q5:} \textbf{[4 points]} Your friend tries to write code which reads in an image and displays it. 
+    \paragraph{Q5:} \textbf{[4 points]} Your friend tries to write code that reads in an image and displays it. 
     
     \begin{python}
         from skimage import io
@@ -399,19 +404,19 @@ multiplicative factor (eg: 2×, 5×)? Please include your code.
 \begin{enumerate} [(a)]
     \item \textbf{[1 point]}
 \begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black]
-Why is the image being displayed incorrectly? \emph{Hint: check the data type of the image and the range of the numbers being read in}
+Why is the image being displayed incorrectly?\\
+\emph{Hint: What data values does plt.imshow() expect?}
 \end{tcolorbox}
 
 \begin{tcolorbox}[colback=white!5!white,colframe=green!75!black, height=3cm]
     %%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        
-    TODO: Your answer for (a) here %%%%%% Remove this line in your answer! %%%%%%
+    
 
     %%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{tcolorbox}
 
-\item \textbf{[2 points]} You and your friend think of two possible ways to display the image correctly: making sure all of the floats are in the correct range (0 - 1) or using integers instead of floats.
+\item \textbf{[2 points]} You and your friend think of two possible ways to display the image correctly.
 \begin{enumerate} [(i)]
 
 \item \textbf{[1 point]}
@@ -420,35 +425,44 @@ Write a possible fix that still uses the float data type.
 \end{tcolorbox}
 
 \begin{tcolorbox}[colback=white!5!white,colframe=green!75!black, height=4cm]
-\begin{python}
-# TODO: your code here
-\end{python}
+    %%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \begin{python}
+    # TODO: your code here
+    \end{python}
+    %%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{tcolorbox}
 
+
+% Please leave the pagebreak
+\pagebreak
 \item \textbf{[2 point]}
 \begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black]
-Write a possible fix using the signed integer data type.
+Write a possible fix using the 8-bit unsigned integer data type.
 \end{tcolorbox}
 
 \begin{tcolorbox}[colback=white!5!white,colframe=green!75!black, height=4cm]
-\begin{python}
-# TODO: your code here
-\end{python}
+    %%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{python}
+    # TODO: your code here
+    \end{python}
+    %%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{tcolorbox}
 \end{enumerate}
 
-\item \textbf{[1 point]} Another friend comes to you and wants help darkening an image. With your newly functioning image display code, you decide to help!
+\item \textbf{[1 point]} Your friend comes to you and wants help darkening an image.
 \begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black]
-Using your answer from part (b) (ii), read in 'gigi.png', darken the pixel intensities by 50, and display the new image. Include your code and a screenshot of the darkened image.
+Using your answer from part (b) (ii), read in 'gigi.jpg', darken the pixel intensities by 20\% of the \emph{initial total brightness range of the data type}, and display the new image. Include your code and a screenshot of the darkened image.
 \end{tcolorbox}
 
 \begin{tcolorbox}[colback=white!5!white,colframe=green!75!black,height fill]
+    %%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \begin{python}
     # TODO: your code here
     \end{python}
     
     \includegraphics[width=0.5\textwidth,height=7cm,keepaspectratio]{images/TODO_gigi_result.png}
-
+    %%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{tcolorbox}
 \end{enumerate}
 
@@ -457,9 +471,9 @@ Using your answer from part (b) (ii), read in 'gigi.png', darken the pixel inten
 
 % Please leave the pagebreak
 \pagebreak
-\paragraph{Q6:} \textbf{[2 + 1 points]}
+\paragraph{Q6:} \textbf{[3 points]}
 
-The debugger within VSCode is an important tool you can use to discover potential bugs in the code that you right.
+The debugger within VSCode is an important tool you can use to discover potential bugs in the code that you write.
 
 Imagine our task is to create a crop of an image that starts at the center of the image and extends to the lower right corner of the image. If all goes well, we should only see content from the lower right region of the original image.
 
@@ -504,18 +518,20 @@ Re-execute the debugger, and capture a screenshot showing your use of the Debug 
 \end{tcolorbox}
 
 \begin{tcolorbox}[colback=white!5!white,colframe=green!75!black,height=8cm,height fill]
+    %%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \includegraphics[width=0.5\textwidth,height=7cm,keepaspectratio]{images/TODO_debugger_snap.jpg}
     
     \begin{python}
     # TODO: paste your code here 
     \end{python}
+    %%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{tcolorbox}
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pagebreak
-\paragraph{Q7:} \textbf{[2 + 1 points]} This program should print out the maximum value in the matrix obtained by multiplying a random non-square matrix with its transpose.
+\paragraph{Q7:} \textbf{[3 points]} This program should print out the maximum value in the matrix obtained by multiplying a random non-square matrix with its transpose.
 
 Here, we're using some numpy functions that may be new to us, but they each have self-explanatory names.
 
@@ -535,42 +551,31 @@ print("Max value:", mat_max)
 This time, when we execute the code, it will raise an exception.
 
 \begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black]
-Run the code in a debugging session, note the exception, and inspect the variables. Form a hypothesis for the error, and use the Debug Console to test that it prevents the exception. 
+Run the code in a debugging session, note the exception, and inspect the variables. Form a hypothesis for the error, set a breakpoint before it, and use the Debug Console to test that it prevents the exception. 
 \end{tcolorbox}
 
 \emph{Hint: Remember rules about matrix multiplication. What should the dimensions of each matrix be? Use the debugger to notice how the shapes of the images do or do not change.}
 
 Capture a screenshot of your session showing us the issue and paste the correct code.
 
-\begin{tcolorbox}[colback=white!5!white,colframe=green!75!black,breakable,height=15cm,enhanced jigsaw,pad at break*=1mm]
+\begin{tcolorbox}[colback=white!5!white,colframe=green!75!black,breakable,height=8cm,enhanced jigsaw,pad at break*=1mm]
+    %%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \includegraphics[width=0.5\textwidth,height=7cm,keepaspectratio]{images/TODO_debugger_snap.jpg}
     
+    %%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%    
+\end{tcolorbox}
+
+% Please leave the pagebreak
+\pagebreak
+\begin{tcolorbox}[colback=white!5!white,colframe=green!75!black,breakable,height=15cm,enhanced jigsaw,pad at break*=1mm]
+    %%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \begin{python}
     # TODO: paste your code here
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    ################################################
-    # YOU MAY USE THIS ADDITIONAL SPACE
-    
-    # WARNING: IF YOU DON'T END UP USING THIS SPACE
-    # KEEP THESE COMMENTS TO MAINTAIN PAGE ALIGNMENT
-    ################################################
     \end{python}
-    
+    %%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%    
 \end{tcolorbox}
+
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% any suggestions for more?
