@@ -394,7 +394,7 @@ multiplicative factor (eg: 2×, 5×)? Please include your code.
         import matplotlib.pyplot as plt
         import numpy as np
 
-        I = io.imread('gigi.jpg').astype(float32)
+        I = io.imread('./images/gigi.jpg').astype(float32)
         plt.imshow(I)
         plt.show()
     \end{python}
@@ -483,7 +483,7 @@ Imagine our task is to create a crop of an image that starts at the center of th
 from skimage import io
 import matplotlib.pyplot as plt
 
-origImage = io.imread('gigi.jpg')
+origImage = io.imread('./images/gigi.jpg')
 (height, width, channels) = origImage.shape
 startCropX = width % 2
 startCropY = height % 2
