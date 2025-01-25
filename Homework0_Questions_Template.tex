@@ -22,225 +22,88 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[11pt]{article}
+\input{csci1430}
 
-\usepackage[english]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage{amssymb}
-\usepackage{xcolor}
-\usepackage[colorlinks = true,
-            linkcolor = blue,
-            urlcolor  = blue]{hyperref}
-\usepackage[a4paper,margin=1.5in]{geometry}
-\usepackage{stackengine,graphicx}
-\usepackage{fancyhdr}
-\setlength{\headheight}{15pt}
-\usepackage{microtype}
-\usepackage{times}
-\usepackage[shortlabels]{enumitem}
-\setlist[enumerate]{topsep=0pt}
-\usepackage{amsmath}
-\usepackage{framed}
-\usepackage{mdframed}
-\usepackage{xcolor}
-\usepackage[most]{tcolorbox}
-
-% setup for todo lists:
-\usepackage{enumitem}
-\newlist{todolist}{itemize}{2}
-\setlist[todolist]{label=$\square$}
-\usepackage{pifont}
-\newcommand{\cmark}{\ding{51}}%
-\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}%
-\hspace{-2.5pt}}
-
-% a great python code format: https://github.com/olivierverdier/python-latex-highlighting
-\usepackage{pythonhighlight}
-
-\usepackage{trimclip,lipsum}
-
-\frenchspacing
-\setlength{\parindent}{0cm} % Default is 15pt.
-\setlength{\parskip}{0.3cm plus1mm minus1mm}
-
-\pagestyle{fancy}
-\fancyhf{}
-\lhead{Homework 0 Questions}
-\rhead{CSCI 1430}
-\lfoot{\textcolor{red}{\textbf{Only}
-\ifcase\thepage
-\or \textbf{instructions}
-\or \textbf{generative AI use}
-\or \textbf{Q1}
-\or \textbf{Q2}
-\or \textbf{Q3}
-\or \textbf{Q4 (a) (i)}
-\or \textbf{Q4 (a) (ii) and Q4 (b) (i)}
-\or \textbf{Q4 (b) (ii)}
-\or \textbf{Q5 (a) and Q5 (b) (i)}
-\or \textbf{Q5 (b) (ii) and Q5 (c)}
-\or \textbf{Q6}
-\or \textbf{Q6}
-\or \textbf{Q7}
-\or \textbf{Q7}
-\or \textbf{feedback}
-\else
-\textbf{[ERROR: PAGE MISALIGNMENT]}
-\fi
-\textbf{should be on this page}
-}}
-\rfoot{\thepage~/ 15}
-
-
-\date{}
-
-\title{\vspace{-1cm}Homework 0 Questions}
-
-
-\begin{document}
-\maketitle
-\thispagestyle{fancy}
-
-\section*{Template Instructions}
-
-This document is a template with specific answer regions and a fixed number of pages. Given large class sizes and limited TA time, the template helps the course staff to grade efficiently and still focus on the content of your submissions. Please help us in this task:
- 
-\begin{itemize}
-  \item Make this document anonymous.
-  
-  \item Questions are in the orange boxes. Provide answers in the green boxes.
-  \item Use the footer to check for correct page alignment.
-
-  \item \textbf{Do NOT remove the answer box.}
-  \item \textbf{Do NOT change the size of the answer box.}
-  \item \textbf{Extra pages are not permitted unless otherwise specified.}
-  \item \textbf{Template edits or page misalignment will lead to a 10 point deduction.}
-\end{itemize}
-
-\section*{Gradescope Submission}
-\begin{itemize}
-  \item Compile this document to a PDF and submit it to Gradescope.
-  \item Pages will be automatically assigned to the right questions on Gradescope.
-\end{itemize}
-
-\section*{This Homework}
-\begin{itemize}
-  \item 7 questions \textbf{[4 + 4 + 8 + 6 + 5 + 3 + 3 = 33 points]}.
-  \item Include code, images, and equations where appropriate.
-\end{itemize}
-
-\pagebreak
-
-\section*{Declaration of Generative AI Use}
-
-\subsection*{Reminder of Course Policy}
-
-\begin{itemize}
-    \item The use of GenAI tools (e.g., ChatGPT, Grammarly, Bard) for completing any part of this course is discouraged.
-    \item Using these tools is not needed to be successful in the class and could be detrimental to your learning experience.
-    \item If you use them, you must cite the tool you used and explain how you used it.
-    \item If you do not cite the tool, it is an academic code violation.
-    \item We will be using special tools to detect cases of unattributed GenAI use.
-\end{itemize}
-
-\subsection*{Student Declaration}
-
-\subsubsection*{Have you used generative AI tools to complete this assignment:}
-
-%%%%%%%%%%%%%% TODO %%%%%%%%%%%%%%%%%%%%
-
-YES $\square$ NO $\blacksquare$ % change answer to \blacksquare
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection*{If you answered YES above, describe what tools you used and what parts of the assignment you used them for below:}
-
-%%%%%%%%%%%%%% TODO %%%%%%%%%%%%%%%%%%%%
-
-\textit{Example: I used ChatGPT to debug my convolution implementation}
-
-\pagebreak
-
-\paragraph{Q1:} \textbf{[4 points]}
-\begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black]
+\begin{question}{1}{4}
 For each of the following, complete the task and check the box to mark it as done.
-\end{tcolorbox}
+\end{question}
 
-
-\begin{tcolorbox}[colback=white!5!white,colframe=green!75!black]
-%%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{todolist}
-    \item[\done] This is an example of a checked box
+%%% Complete the answerlist
+\begin{answerlist}
+    \item[\done] This is an example of a checked box.
     \item Read the GitHub tutorial \href{https://browncsci1430.github.io/resources/github_guide/}{here}.
     \item Create a GitHub account, if you don't have one.
     \item Join the \href{https://www.gradescope.com/}{Gradescope} course.
     \item Join the course \href{https://edstem.org/}{Ed}.
+    \item Optionally \href{https://talktoata.com/join/brown-university-csci1430-spring-2025}{join ATA}.
     \item Complete the \href{https://colab.research.google.com/drive/1K42Mk-CPl8Azql5SJRE9xfkiNwRyo9rs?usp=sharing}{Python tutorial}.
     \item Set up the \href{https://browncsci1430.github.io/resources/python_setup/}{python environment and virtual environment}.
     \item Set up an editing environment (e.g.,~\href{https://browncsci1430.github.io/resources/vscode_setup/}{VSCode}), set it to use your python virtual environment, and know how to debug within it by setting breakpoints.
-%%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\end{todolist}
-\end{tcolorbox}
+\end{answerlist}
 
 \pagebreak
 
-\paragraph{Q2:} 
-\textbf{[4 points]}
-\begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black]
-Please find and read the course collaboration policy on the \href{https://browncsci1430.github.io/webpage/}{course website} and check whether each of the following scenarios violates the policy.
-\end{tcolorbox}
-
+\begin{question}{2}{4}
+Please find and read the course policies on the \href{https://browncsci1430.github.io/}{course website} and check whether each of the following scenarios violates the policy.
+\end{question}
 
 \begin{enumerate}[(a)]
 \item
-Another cs1430 student looking at your code to help you debug, after you have spent time trying to tackle the bug or have come to TA office hours/Ed.
+Searching for Websites to help clarify concepts, with citation in your submission.
 
-\begin{tcolorbox}[colback=white!5!white,colframe=green!75!black]
-%%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Remember: use \item[\done] to mark an answer.
-\begin{todolist}
+\begin{answerlist}
     \item Acceptable
     \item Violation
-\end{todolist}
-%%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\end{tcolorbox}
+\end{answerlist}
+
+\item 
+Ask ATA about a concept in the course, without citation in your submission.
+
+\begin{answerlist}
+    \item Acceptable
+    \item Violation
+\end{answerlist}   
+
+\item 
+Ask ChatGPT a question from the homework and submit its answer with minor changes, with citation in your submission.
+
+\begin{answerlist}
+    \item Acceptable
+    \item Violation
+\end{answerlist}
+
+\item 
+Look at another student's code before you write your own.
+
+\begin{answerlist}
+    \item Acceptable
+    \item Violation
+\end{answerlist}
 
 \item
-Using the result images from another student's code for your write up because your code is broken.
+Talk to another CSCI 1430 student about your code to help you debug, after you have spent time trying to tackle the bug or have come to TA office hours/Ed.
 
-\begin{tcolorbox}[colback=white!5!white,colframe=green!75!black]
-%%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{todolist}
+\begin{answerlist}
     \item Acceptable
     \item Violation
-\end{todolist}
-%%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\end{tcolorbox}
+\end{answerlist}
 
 \item
-Searching the Web for third party sites to clarify concepts for written and code assignments, with proper citation.
+A student who has previously taken the course and is not currently a TA sharing code with you to help you debug.
 
-\begin{tcolorbox}[colback=white!5!white,colframe=green!75!black]
-%%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{todolist}
+\begin{answerlist}
     \item Acceptable
     \item Violation
-\end{todolist}
-%%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\end{tcolorbox}
+\end{answerlist}
 
 \item
-A student who has previously taken the course and is not currently a TA sharing code with you to help you get through a bug.
+Using the result images from another student's code because your code has a bug.
 
-\begin{tcolorbox}[colback=white!5!white,colframe=green!75!black]
-%%%%%%% ANSWER STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{todolist}
+\begin{answerlist}
     \item Acceptable
     \item Violation
-\end{todolist}
-%%%%%%% ANSWER ENDS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\end{tcolorbox}
+\end{answerlist}
 
 \end{enumerate}
 
@@ -251,7 +114,8 @@ A student who has previously taken the course and is not currently a TA sharing 
 % Please leave the pagebreak
 \pagebreak
 
-\paragraph{Q3:} \textbf{[8 points]} Computer vision is all around us, sometimes in surprising ways.
+\paragraph{Q3:} \textbf{[8 points]} 
+Computer vision is all around us, sometimes in surprising ways.
 
 \begin{enumerate}[(a)]
     \item \textbf{[2 points]} 
