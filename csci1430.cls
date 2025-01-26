@@ -10,56 +10,59 @@
 \ProcessOptions
 \LoadClass[11pt]{article}
 
-\usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
-\usepackage{amssymb}
+\usepackage[english]{babel}
+\usepackage{microtype}
+\usepackage{times}
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}\hspace{-2.5pt}}
+
+\usepackage[a4paper,margin=1.5in]{geometry}
+\usepackage{amsmath,amssymb}
 \usepackage{xcolor}
 \usepackage[colorlinks = true,
             linkcolor = blue,
             urlcolor  = blue]{hyperref}
-\usepackage[a4paper,margin=1.5in]{geometry}
-\usepackage{stackengine,graphicx}
-\usepackage{fancyhdr}
-\setlength{\headheight}{15pt}
-\usepackage{microtype}
-\usepackage{times}
-\usepackage[shortlabels]{enumitem}
-\setlist[enumerate]{topsep=0pt}
-\usepackage{amsmath}
+\usepackage{stackengine,graphicx,trimclip}
+%\usepackage{titlesec}
 \usepackage{framed}
 \usepackage{mdframed}
-\usepackage{xcolor}
 \usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\setlength{\headheight}{14pt}
 
+% Lists and default spacing
+\usepackage[shortlabels]{enumitem}
+\setlist[itemize]{itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt}
+\setlist[enumerate]{itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt}
+\setlist[description]{itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt}
 % setup for todo lists:
-\usepackage{enumitem}
 \newlist{todolist}{itemize}{2}
 \setlist[todolist]{label=$\square$}
-\usepackage{pifont}
-\newcommand{\cmark}{\ding{51}}%
-\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}%
-\hspace{-2.5pt}}
 
 % a great python code format: https://github.com/olivierverdier/python-latex-highlighting
 \usepackage{pythonhighlight}
 
-\usepackage{trimclip,lipsum}
-%\usepackage{xparse}
+\usepackage{lipsum}
 
 \frenchspacing
 \setlength{\parindent}{0cm} % Default is 15pt.
 \setlength{\parskip}{0.3cm plus1mm minus1mm}
+% Adjust the space before and after the title
+%\titlespacing*{\title}{0pt}{-1em}{1em}
 
-%%
-% Orange / green boxes
-%%
-
+% Set new counters for our questions
 \newcounter{question}[section]
 \newcounter{subquestion}[subsection]
 \newcounter{subsubquestion}[subsubsection]
 
+%% Switch to 'LaTeX3' style operations
 \ExplSyntaxOn
 
+%
+% BOXES: Orange / green boxes environments
+%
 % Define variables globally
 \int_new:N \l_question_points_int
 \int_new:N \l_answer_height_int
@@ -252,8 +255,34 @@
     \group_end:
 }
 
-
 \ExplSyntaxOff
+
+%
+% The document instructions
+\def\writeinstructions
+{
+    \section*{Template Instructions}
+
+    This document is a template with specific answer regions and a fixed number of pages. Given large class sizes and limited TA time, the template helps the course staff to grade efficiently and still focus on the content of your submissions. Please help us in this task:
+    
+    \begin{itemize}
+    \item Make this document anonymous.
+    
+    \item Questions are in the orange boxes. Provide answers in the green boxes.
+    \item Use the footer to check for correct page alignment.
+
+    \item \textbf{Do NOT remove the answer box.}
+    \item \textbf{Do NOT change the size of the answer box.}
+    \item \textbf{Extra pages are not permitted unless otherwise specified.}
+    \item \textbf{Template edits or page misalignment will lead to a 10 point deduction.}
+    \end{itemize}
+
+    \section*{Gradescope Submission}
+    \begin{itemize}
+    \item Compile this document to a PDF and submit it to Gradescope.
+    \item Pages will be automatically assigned to the right questions on Gradescope.
+    \end{itemize}
+}
 
 
 \date{}
