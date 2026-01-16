@@ -196,10 +196,10 @@ for i in range(height):
 \end{answer}
 
 \pagebreak
-Let's find the time it takes to run this operation once. Because a single short task on multitasking computers often takes variable time, we can record how long code execution takes on a small number of images and then average the execution time.
+Let's find the time it takes to run this operation once, over one image. Because a single short task on multitasking computers often takes variable time, we can record how long code execution takes on a small number of images and then average the execution time.
 
 \begin{subsubquestion}[points=1]
-Record how long it takes on average by executing the program for 10 iterations and computing the mean time. Please include your code.
+Record how long it takes to execute 10 times. Find the average time it takes to process a single image by dividing the total time by 10. Please include your code.
 \end{subsubquestion}
 
 \emph{Note: } When measuring the time, please ignore the file loading. You should only time the image modification itself.
@@ -230,8 +230,8 @@ Using logical indexing (see the Python tutorial), find a faster solution to remo
 
 \pagebreak
 \begin{subsubquestion}[points=1]
-Now, using your optimized solution, record how long it takes to change the pixel values 1000 times. How long does the new code take to change the pixel values on one image? How much faster is the new version per image, as a
-multiplicative factor (e.g., 2$\times$, 5$\times$)? Please include your code.
+Now, using your optimized solution, record how long it takes to run our image modification over 1000 images. How long does the new code take to change one image? How much faster is the new version per image, as a
+multiplicative factor (eg: 2×, 5×) compared to the naive solution in part (a)? Please include your code.
 \end{subsubquestion}
 
 \begin{answer}[height=30]
@@ -428,6 +428,4 @@ Capture a screenshot of your session showing us the issue and paste the correct 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{Feedback? (Optional)}
-We appreciate your feedback on how to improve the course. You can provide anonymous feedback through \href{https://forms.gle/Eu5jJbDUmLknAyJV9}{this form} which can be accessed using your Brown account (your identity will not be collected). If you have urgent non-anonymous comments/questions, please email the instructor. 
-
-\end{document}
+We appreciate your feedback on how to improve the course. You can provide anonymous feedback through \href{https://forms.gle/Eu5jJbDUmLknAyJV9}{this form} which can be accessed using your Brown account (your identity will not be collected). If you have urgent non-anonymous co
