@@ -5,7 +5,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}[2023-11-01]
-\ProvidesClass{csci1430}[2025/01/25 CSC1430 LaTeX Questions v0.1]
+\ProvidesClass{csci1430}[2026/01/19 CSC1430 LaTeX Questions v0.2]
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions
 \LoadClass[11pt]{article}
@@ -23,8 +23,6 @@
             linkcolor = blue,
             urlcolor  = blue]{hyperref}
 \usepackage{stackengine,graphicx,trimclip}
-\usepackage{framed}
-\usepackage{mdframed}
 \usepackage[most]{tcolorbox}
 \usepackage{fancyhdr}
 \setlength{\headheight}{14pt}
@@ -40,8 +38,6 @@
 
 % a great python code format: https://github.com/olivierverdier/python-latex-highlighting
 \usepackage{pythonhighlight}
-
-\usepackage{lipsum}
 
 \frenchspacing
 \setlength{\parindent}{0cm} % Default is 15pt.
@@ -195,6 +191,10 @@
 
 \cs_new_protected:Npn \register_page_marker:nn #1#2
 {
+    % Dual purpose:
+    % 1. Create a standard LaTeX label (marker:Q1.1) for internal referencing.
+    % 2. If exporting, write a command to the expected_pages file associating 
+    %    the current physical page number with this logical question label.
     \tl_set:Nx \l_tmpa_tl { marker:#1 }
     \label{\tl_use:N \l_tmpa_tl}
 
@@ -247,6 +247,10 @@
 
 \cs_new_protected:Npn \fill_missing_expected_page_labels:
 {
+    % "Fill-Forward" Strategy:
+    % Iterate through pages 2..N. If a page has no assigned label in the property list
+    % (meaning no new Question started on it), assume it continues the previous logical question.
+    % We copy the label from (current_page - 1) to (current_page).
     \int_step_inline:nnn { 2 } { \g_expected_total_pages_int }
     {
         \prop_if_in:NnF \g_expected_page_labels_prop { ##1 }
@@ -265,7 +269,7 @@
     % Render the summary using previous-run data, like a ToC
     \int_compare:nNnTF { \g_prev_question_count_int } > { 0 }
     {
-        \int_use:N \g_prev_question_count_int\space questions \space \textbf{[ \seq_use:Nn \g_prev_question_points_seq {~+~} ~\!=~ \int_use:N \g_prev_question_points_total_int\space points ]}.
+        \int_use:N \g_prev_question_count_int\space questions \space \textbf{[ \seq_use:Nn \g_prev_question_points_seq {~+~} ~=~ \int_use:N \g_prev_question_points_total_int\space points ]}.
     }
     {
         \textbf{Questions total pending. Recompile to update points.}
@@ -507,7 +511,7 @@
 
 %
 % The document instructions
-\def\writeinstructions
+\NewDocumentCommand{\writeinstructions}{}
 {
     \section*{Template Instructions}
 
