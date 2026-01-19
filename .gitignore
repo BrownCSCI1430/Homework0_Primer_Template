@@ -3,6 +3,7 @@
 .idea
 __pycache__
 venv
+.venv
 results/*
 *.synctex.gz
 *.synctex(busy)
