@@ -14,9 +14,7 @@
 \usepackage[english]{babel}
 \usepackage{microtype}
 \usepackage{times}
-\usepackage{pifont}
-\newcommand{\cmark}{\ding{51}}
-\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}\hspace{-2.5pt}}
+\newcommand{\filled}{\ensuremath{\blacksquare}}
 
 \usepackage[a4paper,margin=1.5in]{geometry}
 \usepackage{amsmath,amssymb}
@@ -25,7 +23,6 @@
             linkcolor = blue,
             urlcolor  = blue]{hyperref}
 \usepackage{stackengine,graphicx,trimclip}
-%\usepackage{titlesec}
 \usepackage{framed}
 \usepackage{mdframed}
 \usepackage[most]{tcolorbox}
@@ -63,12 +60,217 @@
 %
 % BOXES: Orange / green boxes environments
 %
-% Define variables globally
+% Define variables globally to hold question/answer state
 \int_new:N \l_question_points_int
 \int_new:N \l_answer_height_int
 \bool_new:N \l_question_drawbox_bool
 \tl_new:N \l_question_points_str
 \tl_new:N \l_question_pointpoints_str
+% Scratch space for per-page label assembly
+\tl_new:N \l_expected_page_label_tl
+\bool_new:N \l_expected_page_ok_bool
+\tl_new:N \g_expected_total_pages_tl
+\int_new:N \g_expected_total_pages_int
+% Temporary sequence for expected labels on current page
+\seq_new:N \l_expected_page_labels_seq
+% Expected labels per page (loaded from expected pages file)
+\prop_new:N \g_expected_page_labels_prop
+% Expected-page export controls
+\bool_new:N \g_export_expected_pages_bool
+\tl_new:N \g_expected_pages_file_tl
+\iow_new:N \g_expected_pages_iow
+% Persistent point-summary state (stored via .aux between runs)
+\seq_new:N \g_prev_question_points_seq
+\int_new:N \g_prev_question_points_total_int
+\int_new:N \g_prev_question_count_int
+% Current-run point-summary state (written out for next run)
+\seq_new:N \g_curr_question_points_seq
+\int_new:N \g_curr_question_points_total_int
+\int_new:N \g_curr_question_count_int
+% Variable to store the homework short name
+\tl_new:N \g_homework_shortname_tl
+
+\NewDocumentCommand{\HomeworkShortName}{m}
+{
+    \tl_gset:Nn \g_homework_shortname_tl { #1 }
+}
+
+\NewDocumentCommand{\GetHomeworkShortName}{}
+{
+    \tl_use:N \g_homework_shortname_tl
+}
+
+\cs_new_protected:Npn \reset_question_points_prev:
+{
+    % Clear previous-run totals (reinitialized each compile)
+    \seq_gclear:N \g_prev_question_points_seq
+    \int_gzero:N \g_prev_question_points_total_int
+    \int_gzero:N \g_prev_question_count_int
+}
+
+\cs_new_protected:Npn \record_question_points_prev:n #1
+{
+    % Load points from last run (read from .aux)
+    \seq_gput_right:Nn \g_prev_question_points_seq { #1 }
+    \int_gadd:Nn \g_prev_question_points_total_int { #1 }
+    \int_gincr:N \g_prev_question_count_int
+}
+
+\cs_new_protected:Npn \record_question_points_curr:n #1
+{
+    % Record points from this run (will be written to .aux)
+    \seq_gput_right:Nn \g_curr_question_points_seq { #1 }
+    \int_gadd:Nn \g_curr_question_points_total_int { #1 }
+    \int_gincr:N \g_curr_question_count_int
+}
+
+\cs_new_protected:Npn \append_label_to_page_prop:nn #1#2
+{
+    \prop_get:NnNTF \g_expected_page_labels_prop { #1 } \l_tmpa_tl
+    {
+        \tl_set:Nx \l_tmpb_tl { \l_tmpa_tl\space and\space #2 }
+        \prop_gput:NnV \g_expected_page_labels_prop { #1 } \l_tmpb_tl
+    }
+    {
+        \prop_gput:Nnn \g_expected_page_labels_prop { #1 } { #2 }
+    }
+}
+
+\cs_new_protected:Npn \set_expected_page_label:n #1
+{
+    % Build the expected footer label for a page from the fixed map
+    \tl_set:Nx \l_tmpb_tl { \int_eval:n { #1 } }
+    \prop_get:NVNTF \g_expected_page_labels_prop \l_tmpb_tl \l_tmpa_tl
+    {
+        \tl_set:Nn \l_expected_page_label_tl { \l_tmpa_tl }
+        \bool_set_true:N \l_expected_page_ok_bool
+    }
+    {
+        \tl_set:Nn \l_expected_page_label_tl { [ERROR:\space PAGE\space MISALIGNMENT] }
+        \bool_set_false:N \l_expected_page_ok_bool
+    }
+}
+
+\NewDocumentCommand{\ExpectedPageLabel}{}
+{
+    \set_expected_page_label:n { \value{page} }
+    \textbf{\l_expected_page_label_tl}
+}
+
+\NewDocumentCommand{\ExpectedPageFooterText}{}
+{
+    \set_expected_page_label:n { \value{page} }
+    \bool_if:NTF \l_expected_page_ok_bool
+    { \textbf{Only}~\textbf{\l_expected_page_label_tl}~\textbf{should~be~on~this~page} }
+    { \textbf{\l_expected_page_label_tl} }
+}
+
+\NewDocumentCommand{\SetExpectedPageLabel}{mm}
+{
+    \append_label_to_page_prop:nn { #1 } { #2 }
+}
+
+\NewDocumentCommand{\SetExpectedLabelPage}{mm}
+{
+    \tl_set:Nn \l_tmpa_tl { #1 }
+    \tl_remove_once:Nn \l_tmpa_tl { marker: }
+    \SetExpectedPageLabel{#2}{\l_tmpa_tl}
+}
+
+\NewDocumentCommand{\LoadExpectedPages}{m}
+{
+    \bool_if:NF \g_export_expected_pages_bool
+    {
+        \InputIfFileExists{#1}{}{}
+        \compute_expected_total_pages:
+        \fill_missing_expected_page_labels:
+    }
+}
+
+\NewDocumentCommand{\EnableExpectedPagesExport}{m}
+{
+    \bool_gset_true:N \g_export_expected_pages_bool
+    \tl_gset:Nn \g_expected_pages_file_tl { #1 }
+}
+
+\cs_new_protected:Npn \register_page_marker:nn #1#2
+{
+    \tl_set:Nx \l_tmpa_tl { marker:#1 }
+    \label{\tl_use:N \l_tmpa_tl}
+
+    \bool_if:NT \g_export_expected_pages_bool
+    {
+        \iow_now:Nx \g_expected_pages_iow
+        {
+            \exp_not:N \SetExpectedPageLabel
+            { \int_eval:n { \value{page} } }
+            { \exp_not:N #2 }
+        }
+    }
+}
+
+\NewDocumentCommand{\PlacePageMarker}{mm}
+{
+    \register_page_marker:nn { #1 } { #2 }
+}
+
+\NewDocumentCommand{\TotalPages}{}
+{
+    \int_eval:n { \csname @abspage@last\endcsname }
+}
+
+\NewDocumentCommand{\ExpectedTotalPages}{}
+{
+    \tl_if_empty:NTF \g_expected_total_pages_tl
+    {
+        \int_compare:nNnTF { \g_expected_total_pages_int } > { 0 }
+        { \int_use:N \g_expected_total_pages_int }
+        { \TotalPages }
+    }
+    { \g_expected_total_pages_tl }
+}
+
+\NewDocumentCommand{\SetExpectedTotalPages}{m}
+{
+    \tl_gset:Nn \g_expected_total_pages_tl { #1 }
+}
+
+\cs_new_protected:Npn \compute_expected_total_pages:
+{
+    \int_gzero:N \g_expected_total_pages_int
+    \prop_map_inline:Nn \g_expected_page_labels_prop
+    {
+        \int_compare:nNnT { ##1 } > { \g_expected_total_pages_int }
+        { \int_gset:Nn \g_expected_total_pages_int { ##1 } }
+    }
+}
+
+\cs_new_protected:Npn \fill_missing_expected_page_labels:
+{
+    \int_step_inline:nnn { 2 } { \g_expected_total_pages_int }
+    {
+        \prop_if_in:NnF \g_expected_page_labels_prop { ##1 }
+        {
+            \tl_set:Nx \l_tmpa_tl { \int_eval:n { ##1 - 1 } }
+            \prop_get:NVNT \g_expected_page_labels_prop \l_tmpa_tl \l_tmpb_tl
+            {
+                \prop_gput:NnV \g_expected_page_labels_prop { ##1 } \l_tmpb_tl
+            }
+        }
+    }
+}
+
+\NewDocumentCommand{\QuestionPointsSummary}{}
+{
+    % Render the summary using previous-run data, like a ToC
+    \int_compare:nNnTF { \g_prev_question_count_int } > { 0 }
+    {
+        \int_use:N \g_prev_question_count_int\space questions \space \textbf{[ \seq_use:Nn \g_prev_question_points_seq {~+~} ~\!=~ \int_use:N \g_prev_question_points_total_int\space points ]}.
+    }
+    {
+        \textbf{Questions total pending. Recompile to update points.}
+    }
+}
 
 % Questions: Define key-value options handler globally
 \keys_define:nn { question }
@@ -109,6 +311,22 @@
     % Parse parameter key/values
     \keys_set:nn { question } { #1 }
 
+    % Register a marker for expected-page checking
+    \register_page_marker:nn { Q\thequestion } { Q\thequestion }
+
+    % Record points for automated summary (use previous run data for display)
+    \int_compare:nNnT { \l_question_points_int } > { 0 }
+    {
+        \record_question_points_curr:n { \l_question_points_int }
+        % Persist this question's points to the .aux for next compile
+        \iow_now:Nx \@auxout
+        {
+            \exp_not:N \csname record_question_points_prev:n\exp_not:N \endcsname
+            { \int_use:N \l_question_points_int }
+        }
+    }
+
+
     % Define either "point" or "points" string depending on
     % whether the number of points is equal to 1
     \int_compare:nNnTF { \l_question_points_int } = { 1 } 
@@ -147,6 +365,10 @@
 
     % Parse parameter key/values
     \keys_set:nn { question } { #1 }
+
+    % Register a marker for expected-page checking
+    \register_page_marker:nn { Q\thequestion.\thesubquestion } { Q\thequestion.\thesubquestion }
+
 
     % Define either "point" or "points" string depending on
     % whether the number of points is equal to 1
@@ -187,6 +409,10 @@
 
     % Parse parameter key/values
     \keys_set:nn { question } { #1 }
+
+    % Register a marker for expected-page checking
+    \register_page_marker:nn { Q\thequestion.\thesubquestion.\thesubsubquestion } { Q\thequestion.\thesubquestion.\thesubsubquestion }
+
 
     % Define either "point" or "points" string depending on
     % whether the number of points is equal to 1
@@ -255,6 +481,28 @@
     \group_end:
 }
 
+
+\AtBeginDocument
+{
+    % Reset previous-run totals, then clear current-run buffers
+    \iow_now:Nn \@auxout { \csname reset_question_points_prev:\endcsname }
+    \seq_gclear:N \g_curr_question_points_seq
+    \int_gzero:N \g_curr_question_points_total_int
+    \int_gzero:N \g_curr_question_count_int
+}
+
+\AtBeginDocument
+{
+    \bool_if:NT \g_export_expected_pages_bool
+    { \iow_open:Nn \g_expected_pages_iow { \g_expected_pages_file_tl } }
+}
+
+\AtEndDocument
+{
+    \bool_if:NT \g_export_expected_pages_bool
+    { \iow_close:N \g_expected_pages_iow }
+}
+
 \ExplSyntaxOff
 
 %
@@ -282,6 +530,14 @@
     \item Compile this document to a PDF and submit it to Gradescope.
     \item Pages will be automatically assigned to the right questions on Gradescope.
     \end{itemize}
+
+    \section*{This Homework}
+    \begin{itemize}
+        \item \QuestionPointsSummary
+        \item Include code, images, and equations where appropriate.
+    \end{itemize}
+
+    \PlacePageMarker{instructions}{instructions}
 }
 
 
@@ -290,29 +546,8 @@
 
 \pagestyle{fancy}
 \fancyhf{}
-\lhead{HW0}
+\lhead{\GetHomeworkShortName}
 \rhead{CSCI1430}
 
-\lfoot{\textcolor{red}{\textbf{Only}
-\ifcase\thepage
-\or \textbf{instructions}
-\or \textbf{Q1}
-\or \textbf{Q2}
-\or \textbf{Q3}
-\or \textbf{Q4.1.1}
-\or \textbf{Q4.1.2}
-\or \textbf{Q4.2.1}
-\or \textbf{Q4.2.2}
-\or \textbf{Q5.1 and Q5.2.1}
-\or \textbf{Q5.2.2 and Q5.3}
-\or \textbf{Q6}
-\or \textbf{Q6}
-\or \textbf{Q7}
-\or \textbf{Q7}
-\or \textbf{feedback}
-\else
-\textbf{[ERROR: PAGE MISALIGNMENT]}
-\fi
-\textbf{should be on this page}
-}}
-\rfoot{\thepage~/ 15}
+\lfoot{\textcolor{red}{\ExpectedPageFooterText}}
+\rfoot{\thepage~/ \ExpectedTotalPages}

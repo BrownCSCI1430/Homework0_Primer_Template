@@ -15,35 +15,34 @@
 % https://en.wikibooks.org/wiki/LaTeX
 %
 % Good luck!
-% The CSCI1430 staff
+% The CSCI 1430 staff
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass{csci1430}
 
+% TAs-only: compile once with export enabled to generate csci1430_expectedpages.tex
+%\EnableExpectedPagesExport{csci1430_expectedpages.tex}
+\LoadExpectedPages{csci1430_expectedpages.tex}
+
 \begin{document}
 \title{Homework 0 Questions}
+\HomeworkShortName{HW0}
 \maketitle
 \thispagestyle{fancy}
 
 \writeinstructions
 
-\section*{This Homework}
-\begin{itemize}
-  \item 7 questions \textbf{[4 + 4 + 8 + 6 + 5 + 3 + 3 = 33 points]}.
-  \item Include code, images, and equations where appropriate.
-\end{itemize}
-
 \pagebreak % Please leave it here
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{question}[points=4]
-For each of the following, complete the task and check the box to mark it as done.
+For each of the following, complete the task and fill the box to mark it as done.
 \end{question}
 
 %%% Complete the answerlist
 \begin{answerlist}
-    \item[\done] This is an example of a checked box.
+    \item[\filled] This is an example of a filled box.
     \item Read the GitHub tutorial \href{https://browncsci1430.github.io/resources/github_guide/}{here}.
     \item Create a GitHub account, if you don't have one.
     \item Join the \href{https://www.gradescope.com/}{Gradescope} course.
@@ -65,7 +64,7 @@ Please find and read the course policies on the \href{https://browncsci1430.gith
 \item
 Search for Websites to help you clarify concepts, with citation in your submission.
 
-% Remember: use \item[\done] to mark an answer.
+% Remember: use \item[\filled] to mark an answer.
 \begin{answerlist}
     \item Acceptable
     \item Violation
@@ -427,6 +426,7 @@ Capture a screenshot of your session showing us the issue and paste the correct 
 \pagebreak
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\PlacePageMarker{feedback}{feedback}
 \section*{Feedback? (Optional)}
 We appreciate your feedback on how to improve the course. You can provide anonymous feedback through \href{https://forms.gle/Eu5jJbDUmLknAyJV9}{this form} which can be accessed using your Brown account (your identity will not be collected). If you have urgent non-anonymous comments/questions, please email the instructor. 
 
